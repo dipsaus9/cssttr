@@ -1,1 +1,43 @@
-body{ background: red; }
+
+@import
+  "components/functions",
+  "components/reset",
+  "components/colors",
+  "components/typhography";
+body{ margin: 0; padding: 0; font-size: 100%; background: $light-grey; }
+header{ background-color: $white; height: 65px;
+  nav{ margin: 0 auto; max-width: 1320px; width: 100vw; display: block; padding: 0px 20px;
+    h1{ display: none; }
+    ul{ display: flex; flex-direction: row; padding: 0;
+      li{ font-size: rem(18); font-weight: $font-bold; letter-spacing: .2px; text-transform: uppercase; line-height: 65px; padding: 0px rem(25) 0px 0px;
+        &:nth-of-type(2){
+          &:after{ content: ''; position: absolute; background: $grey-white; top: 65px; left: 0; width: 100vw; height: 250px; z-index: -1; pointer-events: none; height: 0; transition: .3s ease-in-out; }
+          &:focus-within, &:hover{
+            &:after{ height: 250px; }
+            ul{ max-height: 250px; padding: 25px 20px; }
+          }
+        }
+        a{ }
+        ul{ display: grid; grid-template-columns: repeat(3, 1fr); position: absolute; left: 50%; width: 100vw; max-width: 1320px; transform: translateX(-50%); grid-gap: 20px; padding: 0px 20px; top: 65px; max-height: 0; overflow: hidden; transition: .3s ease-in-out;
+          li{ background: $white; height: 200px; position: relative; background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .7)), url("../img/350x150.png"); background-size: cover; background-position: center;
+            a{ padding: 20px; size: 100%; position: absolute; left: 0; top: auto; bottom: 0; display: flex; justify-content: flex-end; align-items: flex-end; transition: .3s ease-in-out; color: $white;
+              &:hover, &:focus{ box-shadow: 0px 0px 11px 1px rgba(0,0,0, .6); text-decoration: underline; }
+              &:after{ content: none; }
+            }
+            &:nth-of-type(2):after{ content: none; }
+            &[title="rock"]{ background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .7)), url("../img/rock.jpg"); background-position: center; background-size: cover;background-repeat: no-repeat;  }
+            &[title="paper"]{ background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .7)), url("../img/paper.png"); background-position: center; background-size: cover; background-repeat: no-repeat;}
+            &[title="scissor"]{ background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .7)), url("../img/scissor.jpg"); background-position: center; background-size: cover; background-repeat: no-repeat;}
+
+          }
+        }
+      }
+    }
+  }
+}
+a{ position: relative;
+  &:after{ content: ''; width: 00% ; height: 3px; position: absolute; top: calc(100% - 5px); left: 0; background: $feelgood; display: block; transition: .2s ease-in-out; }
+  &:hover, &:focus{
+    &:after{ width: 100% ;}
+  }
+}

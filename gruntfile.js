@@ -21,7 +21,6 @@ module.exports = function(grunt) {
         processors: [
           require('pixrem')(),
           require('autoprefixer')({broswers: 'last 2 versions'}),
-          require('cssnano'),
           require('postcss-size')({}),
           require('postcss-alias')({}),
           require('postcss-center')({}),
@@ -120,10 +119,10 @@ module.exports = function(grunt) {
            '**/*',
            '!js/**',
            '!scss/**',
-           // 'fonts/**',
+           'fonts/**',
            '!img/**'
          ],
-         dest: 'dist'
+         dest: ''
        }]
      },
    },
