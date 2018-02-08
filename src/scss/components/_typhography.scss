@@ -24,6 +24,6 @@ h6{ font-size: rem(14); line-height: 32px; font-weight: $font-bold; }
 
 
 h2{ font-family: $main-font-family; font-size: rem(32); font-weight: $font-bold; line-height: 32px; margin-bottom: 15px; }
-a,p,li,ol,ul,span,blockquote,title,date,h1,h2,h3,h4,h5,button, h6, input, label, option, pre, sup, table, td, th{
+a,p,li,ol,ul,span,blockquote,title,time,h1,h2,h3,h4,h5,button, h6, input, label, option, pre, sup, table, td, th{
   font-family: $main-font-family; color: #000; font-size: rem(16); letter-spacing: 0px; line-height: 26px; padding: 10px 0px; margin: 0; font-weight: $font-book;
 }
