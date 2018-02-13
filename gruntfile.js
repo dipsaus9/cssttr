@@ -19,7 +19,6 @@ module.exports = function(grunt) {
       options: {
         map: true,
         processors: [
-          require('pixrem')(),
           require('autoprefixer')({broswers: 'last 2 versions'}),
           require('postcss-size')({}),
           require('postcss-alias')({}),
