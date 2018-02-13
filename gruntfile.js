@@ -25,7 +25,6 @@ module.exports = function(grunt) {
           require('postcss-alias')({}),
           require('postcss-center')({}),
           require('postcss-vmin')({}),
-          // require('css-byebye')({ rulesToRemove: [''], map: false })
         ]
       },
       files: {
@@ -35,37 +34,15 @@ module.exports = function(grunt) {
         dest: 'css',
       },
     },
-    babel: {
-      options: {
-          "sourceMap": false,
-          presets: ['env']
-      },
-      dist: {
-          files: [{
-              "expand": true,
-              "cwd": "src/js",
-              "src": ["**/*.js"],
-              "dest": "js",
-              "ext": ".js"
-          }]
-      }
-    },
     watch: {
-      scripts: {
-       files: ['src/js/*.js'],
-       tasks: ['babel'],
-       options: {
-         spawn: false,
-       },
-     },
      css: {
-       files: 'src/scss/**/*.scss',
-       tasks: ['sass', 'postcss'],
+       files: 'src/**/*.css',
+       tasks: ['copy:css', 'postcss'],
        options: {
          spawn: false,
        }
      },
-     php: {
+     html: {
        files: '**/*.html',
        tasks: ['copy:theme'],
        options: {
@@ -100,16 +77,16 @@ module.exports = function(grunt) {
          dest: 'img'
        }]
      },
-    //  css: {
-    //    files: [{
-    //      expand: true,
-    //      cwd: 'css/',
-    //      src: [
-    //        '**/*.css',
-    //      ],
-    //      dest: 'C:/wamp64/www/wordpress/wp-content/themes/Dennis/css'
-    //    }]
-    //  },
+     css: {
+       files: [{
+         expand: true,
+         cwd: 'src/',
+         src: [
+           '**/*.css',
+         ],
+         dest: 'css/'
+       }]
+     },
      theme: {
        files: [{
          expand: true,
@@ -119,6 +96,7 @@ module.exports = function(grunt) {
            '**/*',
            '!js/**',
            '!scss/**',
+           '!**/*.css',
            'fonts/**',
            '!img/**'
          ],
@@ -128,14 +106,12 @@ module.exports = function(grunt) {
    },
  });
   //load the plugins
-  grunt.loadNpmTasks ('grunt-sass'); //Convert to css
   grunt.loadNpmTasks('grunt-contrib-watch'); //Watch when items change
   grunt.loadNpmTasks('grunt-browser-sync'); //Sync browser
   grunt.loadNpmTasks('grunt-contrib-copy'); //copy to wordpress
   grunt.loadNpmTasks('grunt-postcss'); //post css
-  grunt.loadNpmTasks('grunt-babel'); //post css
 
   //Register tasks
-  grunt.registerTask('default', ['babel', 'sass', 'postcss', 'copy', 'browserSync' , 'watch']);
+  grunt.registerTask('default', ['copy', 'postcss', 'browserSync' , 'watch']);
 
 };
