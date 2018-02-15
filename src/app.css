@@ -37,7 +37,8 @@ header nav{
   margin: 0 auto;
   justify-content: space-between;
   padding: 0 1.25rem;
-  /* border: 1px solid red; */
+  z-index: 2;
+  position: relative;
 }
 
 nav h1{
@@ -58,7 +59,7 @@ nav ul{
   align-items: center;
 }
 
-nav ul li ul{ display: none; } /* alleen voor testen */
+nav ul li ul{ display: none; } /* disabled second nav */
 
 nav ul li{
   text-decoration: none;
@@ -107,6 +108,9 @@ section{
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
+  width: 100vw;
+  left: 0;
+  max-width: 100%;
 }
 section article{
   width: 50vw;
@@ -119,7 +123,7 @@ section article{
   overflow: visible;
 }
 
-.image{
+section article div{
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -137,52 +141,51 @@ article figure{
   height: 100%;
   display: block;
   position: relative;
-  clip-path: inset(15%);
+  clip-path: inset(150px 15%);
   transition: .3s ease-in-out;
 }
 article figure figcaption{
+  position: absolute;
+  z-index: 2;
+  bottom: 100px;
+  left: 50%;
+  width: 90%;
+  left: 5%;
+  background: white;
+  padding: 15px;
   display: none;
-}
-
-section article:nth-of-type(1) .image{
-  background-image: url('../img/1.jpg');
-}
-section article:nth-of-type(2) .image{
-  background-image: url('../img/2.jpg');
-}
-section article:nth-of-type(3) .image{
-  background-image: url('../img/3.jpg');
-}
-section article:nth-of-type(4) .image{
-  background-image: url('../img/4.jpg');
-}
-section article:nth-of-type(5) .image{
-  background-image: url('../img/5.jpg');
-}
-section article:nth-of-type(6) .image{
-  background-image: url('../img/6.jpeg');
-}
-section article:nth-of-type(7) .image{
-  background-image: url('../img/7.jpeg');
-}
-
-
-input{
-  appearance: none;
   opacity: 0;
 }
-
-label:after{
-  content: '';
-  display: block;
-  border-radius: 50%;
-  width: 15px;
-  height: 15px;
-  background: red;
+article figure figcaption a:after{
+  top: 100%;
 }
-
-input:checked + label:after{
-  background: blue;
+figcaption a{
+  text-decoration: none;
+  outline: none;
+}
+article figure figcaption footer{
+  font-size: .8rem;
+}
+section article:nth-of-type(1) div{
+  background-image: url('../img/1.jpg');
+}
+section article:nth-of-type(2) div{
+  background-image: url('../img/2.jpg');
+}
+section article:nth-of-type(3) div{
+  background-image: url('../img/3.jpg');
+}
+section article:nth-of-type(4) div{
+  background-image: url('../img/4.jpg');
+}
+section article:nth-of-type(5) div{
+  background-image: url('../img/5.jpg');
+}
+section article:nth-of-type(6) div{
+  background-image: url('../img/6.jpeg');
+}
+section article:nth-of-type(7) div{
+  background-image: url('../img/7.jpeg');
 }
 
 /* 1 active */
@@ -191,19 +194,33 @@ section input[value="1"]:checked ~ article:nth-of-type(1){
   left: 50vw;
   transition: .3s;
 }
-section input[value="1"]:checked ~ article:nth-of-type(1) .image{
+section input[value="1"]:checked ~ article:nth-of-type(1) div{
   z-index: 1;
   left: 0;
 }
+section input[value="1"]:checked ~ label:nth-of-type(1){
+  pointer-events: none;
+  visibility: hidden;
+  left: auto;
+  right: 30px;
+}
+
+
 /* 2 */
 section input[value="1"]:checked ~ article:nth-of-type(2){
   z-index: 0;
   left: 100vw;
   transition: .3s;
 }
-section input[value="1"]:checked ~ article:nth-of-type(2) .image{
+section input[value="1"]:checked ~ article:nth-of-type(2) div{
   z-index: 1;
   left: -50vw;
+}
+section input[value="1"]:checked ~ label:nth-of-type(2){
+  visibility: visible;
+  pointer-events: all;
+  left: auto;
+  right: 30px;
 }
 /* 3 */
 section input[value="1"]:checked ~ article:nth-of-type(3){
@@ -211,40 +228,67 @@ section input[value="1"]:checked ~ article:nth-of-type(3){
   left: 150vw;
   transition: 0s;
 }
-section input[value="1"]:checked ~ article:nth-of-type(3) .image{
+section input[value="1"]:checked ~ article:nth-of-type(3) div{
   z-index: 1;
   left: -100vw;
 }
+section input[value="1"]:checked ~ label:nth-of-type(3){
+  pointer-events: none;
+  visibility: hidden;
+}
+
+
 /* 4 */
 section input[value="1"]:checked ~ article:nth-of-type(4){
   z-index: 0;
   left: -100vw;
   transition: 0s;
 }
-section input[value="1"]:checked ~ article:nth-of-type(4) .image{
+section input[value="1"]:checked ~ article:nth-of-type(4) div{
   z-index: 1;
   left: 150vw;
 }
+section input[value="1"]:checked ~ label:nth-of-type(4){
+  pointer-events: none;
+  visibility: hidden;
+}
+
+
 /* 5 */
 section input[value="1"]:checked ~ article:nth-of-type(5){
   z-index: 0;
   left: -50vw;
   transition: .3s;
 }
-section input[value="1"]:checked ~ article:nth-of-type(5) .image{
+section input[value="1"]:checked ~ article:nth-of-type(5) div{
   z-index: 1;
   left: 100vw;
 }
+section input[value="1"]:checked ~ label:nth-of-type(5){
+  pointer-events: none;
+  visibility: hidden;
+}
+
+
 /* 6 */
 section input[value="1"]:checked ~ article:nth-of-type(6){
   z-index: 0;
   left: 0vw;
   transition: .3s;
 }
-section input[value="1"]:checked ~ article:nth-of-type(6) .image{
+section input[value="1"]:checked ~ article:nth-of-type(6) div{
   z-index: 1;
   left: 50vw;
 }
+section input[value="1"]:checked ~ label:nth-of-type(6){
+  visibility: visible;
+  pointer-events: all;
+  left: 30px;
+  right: auto;
+}
+
+
+
 
 
 /* 2 active */
@@ -253,59 +297,111 @@ section input[value="2"]:checked ~ article:nth-of-type(1){
   left: 0;
   transition: .3s;
 }
-section input[value="2"]:checked ~ article:nth-of-type(1) .image{
+section input[value="2"]:checked ~ article:nth-of-type(1) div{
   z-index: 1;
   left: 50vw;
 }
+section input[value="2"]:checked ~ label:nth-of-type(1){
+  pointer-events: all;
+  visibility: visible;
+  left: 30px;
+  right: auto;
+}
+
 /* 2 */
 section input[value="2"]:checked ~ article:nth-of-type(2){
   z-index: 1;
   left: 50vw;
   transition: .3s;
 }
-section input[value="2"]:checked ~ article:nth-of-type(2) .image{
+section input[value="2"]:checked ~ article:nth-of-type(2) div{
   z-index: 1;
   left: 0vw;
 }
+section input[value="2"]:checked ~ label:nth-of-type(2){
+  visibility: hidden;
+  left: auto;
+  right: 30px;
+  pointer-events: none;
+}
+section input[value="2"]:checked ~ label:last-of-type{
+  visibility: visible;
+  left: 30px;
+  right: auto;
+  pointer-events: all;
+}
+
+
 /* 3 */
 section input[value="2"]:checked ~ article:nth-of-type(3){
   z-index: 0;
   left: 100vw;
   transition: .3s;
 }
-section input[value="2"]:checked ~ article:nth-of-type(3) .image{
+section input[value="2"]:checked ~ article:nth-of-type(3) div{
   z-index: 1;
   left: -50vw;
 }
+section input[value="2"]:checked ~ label:nth-of-type(3){
+  pointer-events: all;
+  visibility: visible;
+  left: auto;
+  right: 30px;;
+}
+
+
 /* 4 */
 section input[value="2"]:checked ~ article:nth-of-type(4){
   z-index: 0;
   left: 150vw;
   transition: 0s;
 }
-section input[value="2"]:checked ~ article:nth-of-type(4) .image{
+section input[value="2"]:checked ~ article:nth-of-type(4) div{
   z-index: 1;
   left: -100vw;
 }
+section input[value="2"]:checked ~ label:nth-of-type(4){
+  visibility: hidden;
+  left: auto;
+  right: 30px;
+  pointer-events: none;
+}
+
+
+
 /* 5 */
 section input[value="2"]:checked ~ article:nth-of-type(5){
   z-index: 0;
   left: -100vw;
   transition: 0s;
 }
-section input[value="2"]:checked ~ article:nth-of-type(5) .image{
+section input[value="2"]:checked ~ article:nth-of-type(5) div{
   z-index: 1;
   left: 150vw;
 }
+section input[value="2"]:checked ~ label:nth-of-type(5){
+  visibility: hidden;
+  left: auto;
+  right: 30px;
+  pointer-events: none;
+}
+
+
 /* 6 */
 section input[value="2"]:checked ~ article:nth-of-type(6){
   z-index: 0;
   left: -50vw;
   transition: .3s;
 }
-section input[value="2"]:checked ~ article:nth-of-type(6) .image{
+section input[value="2"]:checked ~ article:nth-of-type(6) div{
   z-index: 1;
   left: 100vw;
+}
+section input[value="2"]:checked ~ label:nth-of-type(6){
+  visibility: hidden;
+  left: auto;
+  right: 30px;
+  pointer-events: none;
 }
 
 
@@ -315,60 +411,104 @@ section input[value="3"]:checked ~ article:nth-of-type(1){
   left: -50vw;
   transition: .3s;
 }
-section input[value="3"]:checked ~ article:nth-of-type(1) .image{
+section input[value="3"]:checked ~ article:nth-of-type(1) div{
   z-index: 1;
   left: 100vw;
 }
+section input[value="3"]:checked ~ label:nth-of-type(1){
+  visibility: hidden;
+  left: auto;
+  right: 30px;
+  pointer-events: none;
+}
+
 /* 2 */
 section input[value="3"]:checked ~ article:nth-of-type(2){
   z-index: 0;
   left: 0vw;
   transition: .3s;
 }
-section input[value="3"]:checked ~ article:nth-of-type(2) .image{
+section input[value="3"]:checked ~ article:nth-of-type(2) div{
   z-index: 1;
   left: 50vw;
 }
+section input[value="3"]:checked ~ label:nth-of-type(2){
+  visibility: visible;
+  left: 30px;
+  right: auto;
+  pointer-events: all;
+}
+
 /* 3 */
 section input[value="3"]:checked ~ article:nth-of-type(3){
   z-index: 0;
   left: 50vw;
   transition: .3s;
 }
-section input[value="3"]:checked ~ article:nth-of-type(3) .image{
+section input[value="3"]:checked ~ article:nth-of-type(3) div{
   z-index: 1;
   left: 0vw;
 }
+section input[value="3"]:checked ~ label:nth-of-type(3){
+  visibility: hidden;
+  left: auto;
+  right: 30px;
+  pointer-events: none;
+}
+
 /* 4 */
 section input[value="3"]:checked ~ article:nth-of-type(4){
   z-index: 0;
   left: 100vw;
   transition: .3s;
 }
-section input[value="3"]:checked ~ article:nth-of-type(4) .image{
+section input[value="3"]:checked ~ article:nth-of-type(4) div{
   z-index: 1;
   left: -50vw;
 }
+section input[value="3"]:checked ~ label:nth-of-type(4){
+  visibility: visible;
+  left: auto;
+  right: 30px;
+  pointer-events: all;
+}
+
 /* 5 */
 section input[value="3"]:checked ~ article:nth-of-type(5){
   z-index: 0;
   left: 150vw;
   transition: 0s;
 }
-section input[value="3"]:checked ~ article:nth-of-type(5) .image{
+section input[value="3"]:checked ~ article:nth-of-type(5) div{
   z-index: 1;
   left: -100vw;
 }
+section input[value="3"]:checked ~ label:nth-of-type(5){
+  visibility: hidden;
+  left: auto;
+  right: 30px;
+  pointer-events: none;
+}
+
+
 /* 6 */
 section input[value="3"]:checked ~ article:nth-of-type(6){
   z-index: 0;
   left: -100vw;
   transition: 0s;
 }
-section input[value="3"]:checked ~ article:nth-of-type(6) .image{
+section input[value="3"]:checked ~ article:nth-of-type(6) div{
   z-index: 1;
   left: 150vw;
 }
+section input[value="3"]:checked ~ label:nth-of-type(6){
+  visibility: hidden;
+  left: auto;
+  right: 30px;
+  pointer-events: none;
+}
+
+
 
 /* 4  active */
 section input[value="4"]:checked ~ article:nth-of-type(1){
@@ -376,39 +516,66 @@ section input[value="4"]:checked ~ article:nth-of-type(1){
   left: -100vw;
   transition: 0s;
 }
-section input[value="4"]:checked ~ article:nth-of-type(1) .image{
+section input[value="4"]:checked ~ article:nth-of-type(1) div{
   z-index: 1;
   left: 150vw;
 }
+section input[value="4"]:checked ~ label:nth-of-type(1){
+  visibility: hidden;
+  left: auto;
+  right: 30px;
+  pointer-events: none;
+}
+
 /* 2 */
 section input[value="4"]:checked ~ article:nth-of-type(2){
   z-index: 0;
   left: -50vw;
   transition: .3s;
 }
-section input[value="4"]:checked ~ article:nth-of-type(2) .image{
+section input[value="4"]:checked ~ article:nth-of-type(2) div{
   z-index: 1;
   left: 100vw;
 }
+section input[value="4"]:checked ~ label:nth-of-type(2){
+  visibility: hidden;
+  left: auto;
+  right: 30px;
+  pointer-events: none;
+}
+
 /* 3 */
 section input[value="4"]:checked ~ article:nth-of-type(3){
   z-index: 0;
   left: 0;
   transition: .3s;
 }
-section input[value="4"]:checked ~ article:nth-of-type(3) .image{
+section input[value="4"]:checked ~ article:nth-of-type(3) div{
   z-index: 1;
   left: 50vw;
 }
+section input[value="4"]:checked ~ label:nth-of-type(3){
+  visibility: visible;
+  left: 30px;
+  right: auto;
+  pointer-events: all;
+}
+
 /* 4 */
 section input[value="4"]:checked ~ article:nth-of-type(4){
   z-index: 0;
   left: 50vw;
   transition: .3s;
 }
-section input[value="4"]:checked ~ article:nth-of-type(4) .image{
+section input[value="4"]:checked ~ article:nth-of-type(4) div{
   z-index: 1;
   left: -0;
+}
+section input[value="4"]:checked ~ label:nth-of-type(4){
+  visibility: hidden;
+  left: auto;
+  right: 30px;
+  pointer-events: none;
 }
 /* 5 */
 section input[value="4"]:checked ~ article:nth-of-type(5){
@@ -416,9 +583,15 @@ section input[value="4"]:checked ~ article:nth-of-type(5){
   left: 100vw;
   transition: .3s;
 }
-section input[value="4"]:checked ~ article:nth-of-type(5) .image{
+section input[value="4"]:checked ~ article:nth-of-type(5) div{
   z-index: 1;
   left: -50vw;
+}
+section input[value="4"]:checked ~ label:nth-of-type(5){
+  visibility: visible;
+  left: auto;
+  right: 30px;
+  pointer-events: all;
 }
 /* 6 */
 section input[value="4"]:checked ~ article:nth-of-type(6){
@@ -426,10 +599,18 @@ section input[value="4"]:checked ~ article:nth-of-type(6){
   left: 150vw;
   transition: 0s;
 }
-section input[value="4"]:checked ~ article:nth-of-type(6) .image{
+section input[value="4"]:checked ~ article:nth-of-type(6) div{
   z-index: 1;
   left: -100vw;
 }
+section input[value="4"]:checked ~ label:nth-of-type(6){
+  visibility: hidden;
+  left: auto;
+  right: 30px;
+  pointer-events: none;
+}
+
+
 
 /* 5  active */
 section input[value="5"]:checked ~ article:nth-of-type(1){
@@ -437,17 +618,18 @@ section input[value="5"]:checked ~ article:nth-of-type(1){
   left: 150vw;
   transition: 0s;
 }
-section input[value="5"]:checked ~ article:nth-of-type(1) .image{
+section input[value="5"]:checked ~ article:nth-of-type(1) div{
   z-index: 1;
   left: -100vw;
 }
+
 /* 2 */
 section input[value="5"]:checked ~ article:nth-of-type(2){
   z-index: 0;
   left: -100vw;
   transition: 0s;
 }
-section input[value="5"]:checked ~ article:nth-of-type(2) .image{
+section input[value="5"]:checked ~ article:nth-of-type(2) div{
   z-index: 1;
   left: 150vw;
 }
@@ -458,7 +640,7 @@ section input[value="5"]:checked ~ article:nth-of-type(3){
   left: -50vw;
   transition: .3s;
 }
-section input[value="5"]:checked ~ article:nth-of-type(3) .image{
+section input[value="5"]:checked ~ article:nth-of-type(3) div{
   z-index: 1;
   left: 100vw;
 }
@@ -468,9 +650,15 @@ section input[value="5"]:checked ~ article:nth-of-type(4){
   left: 0vw;
   transition: .3s;
 }
-section input[value="5"]:checked ~ article:nth-of-type(4) .image{
+section input[value="5"]:checked ~ article:nth-of-type(4) div{
   z-index: 1;
   left: 50vw;
+}
+section input[value="5"]:checked ~ label:nth-of-type(4){
+  visibility: visible;
+  left: 30px;
+  right: auto;
+  pointer-events: all;
 }
 /* 5 */
 section input[value="5"]:checked ~ article:nth-of-type(5){
@@ -478,9 +666,15 @@ section input[value="5"]:checked ~ article:nth-of-type(5){
   left: 50vw;
   transition: .3s;
 }
-section input[value="5"]:checked ~ article:nth-of-type(5) .image{
+section input[value="5"]:checked ~ article:nth-of-type(5) div{
   z-index: 1;
   left: 0vw;
+}
+section input[value="5"]:checked ~ label:nth-of-type(5){
+  visibility: hidden;
+  left: auto;
+  right: 30px;
+  pointer-events: none;
 }
 /* 6 */
 section input[value="5"]:checked ~ article:nth-of-type(6){
@@ -488,11 +682,16 @@ section input[value="5"]:checked ~ article:nth-of-type(6){
   left: 100vw;
   transition: .3s;
 }
-section input[value="5"]:checked ~ article:nth-of-type(6) .image{
+section input[value="5"]:checked ~ article:nth-of-type(6) div{
   z-index: 1;
   left: -50vw;
 }
-
+section input[value="5"]:checked ~ label:nth-of-type(6){
+  visibility: visible;
+  left: auto;
+  right: 30px;
+  pointer-events: all;
+}
 
 /* 6  active */
 section input[value="6"]:checked ~ article:nth-of-type(1){
@@ -500,7 +699,7 @@ section input[value="6"]:checked ~ article:nth-of-type(1){
   left: 100vw;
   transition: .3s;
 }
-section input[value="6"]:checked ~ article:nth-of-type(1) .image{
+section input[value="6"]:checked ~ article:nth-of-type(1) div{
   z-index: 1;
   left: -50vw;
 }
@@ -510,7 +709,7 @@ section input[value="6"]:checked ~ article:nth-of-type(2){
   left: 150vw;
   transition: 0s;
 }
-section input[value="6"]:checked ~ article:nth-of-type(2) .image{
+section input[value="6"]:checked ~ article:nth-of-type(2) div{
   z-index: 1;
   left: -100vw;
 }
@@ -521,7 +720,7 @@ section input[value="6"]:checked ~ article:nth-of-type(3){
   left: -100vw;
   transition: 0s;
 }
-section input[value="6"]:checked ~ article:nth-of-type(3) .image{
+section input[value="6"]:checked ~ article:nth-of-type(3) div{
   z-index: 1;
   left: 150vw;
 }
@@ -531,7 +730,7 @@ section input[value="6"]:checked ~ article:nth-of-type(4){
   left: -50vw;
   transition: .3s;
 }
-section input[value="6"]:checked ~ article:nth-of-type(4) .image{
+section input[value="6"]:checked ~ article:nth-of-type(4) div{
   z-index: 1;
   left: 100vw;
 }
@@ -541,7 +740,7 @@ section input[value="6"]:checked ~ article:nth-of-type(5){
   left: 0vw;
   transition: .3s;
 }
-section input[value="6"]:checked ~ article:nth-of-type(5) .image{
+section input[value="6"]:checked ~ article:nth-of-type(5) div{
   z-index: 1;
   left: 50vw;
 }
@@ -551,26 +750,235 @@ section input[value="6"]:checked ~ article:nth-of-type(6){
   left: 50vw;
   transition: .3s;
 }
-section input[value="6"]:checked ~ article:nth-of-type(6) .image{
+section input[value="6"]:checked ~ article:nth-of-type(6) div{
   z-index: 1;
   left: 0;
 }
+section input[value="6"]:checked ~ label:nth-of-type(6){
+  visibility: hidden;
+  left: auto;
+  right: 30px;
+  pointer-events: none;
+}
 
 section input[value= "1"]:checked ~ article:nth-of-type(1) figure{
-  clip-path: inset(10% 5%);
+  clip-path: inset(100px 5% 100px);
+}
+section input[value="1"]:checked ~ label:nth-of-type(2):before{
+    content: '›';
+    display: block;
 }
 section input[value= "2"]:checked ~ article:nth-of-type(2) figure{
-  clip-path: inset(10% 5%);
+  clip-path: inset(100px 5% 100px);
+}
+section input[value="2"]:checked ~ label:nth-of-type(3):before{
+    content: '›';
+    display: block;
 }
 section input[value= "3"]:checked ~ article:nth-of-type(3) figure{
-  clip-path: inset(10% 5%);
+  clip-path: inset(100px 5% 100px);
+}
+section input[value="3"]:checked ~ label:nth-of-type(4):before{
+    content: '›';
+    display: block;
 }
 section input[value= "4"]:checked ~ article:nth-of-type(4) figure{
-  clip-path: inset(10% 5%);
+  clip-path: inset(100px 5% 100px);
+}
+section input[value="4"]:checked ~ label:nth-of-type(5):before{
+    content: '›';
+    display: block;
 }
 section input[value= "5"]:checked ~ article:nth-of-type(5) figure{
-  clip-path: inset(10% 5%);
+  clip-path: inset(100px 5% 100px);
+}
+section input[value="5"]:checked ~ label:nth-of-type(6):before{
+    content: '›';
+    display: block;
 }
 section input[value= "6"]:checked ~ article:nth-of-type(6) figure{
-  clip-path: inset(10% 5%);
+  clip-path: inset(100px 5% 100px);
+}
+section input[value="6"]:checked ~ label:nth-of-type(7):before{
+    content: '›';
+    display: block;
+}
+
+section input:nth-of-type(1):not(:checked) + label{
+  visibility: visible;
+  right: 30px;
+  left: auto;
+  pointer-events: all;
+}
+section label:nth-of-type(7){
+  visibility: hidden;
+  pointer-events: none;
+}
+section article form input{
+  position: absolute;
+}
+section form{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+}
+
+section form input{
+  position: absolute;
+  opacity: 0;
+}
+
+section form label{
+  position: absolute;
+  opacity: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  color: white;
+  text-align: center;
+  left: 30px;
+  right: auto;
+  text-indent: -9999px;
+  cursor: pointer;
+}
+section form label:before{
+  content: '‹';
+  text-indent: 0;
+  font-size: 6rem;
+  display: block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 0.4;
+  animation: hoverArrow 1s alternate-reverse infinite;
+  animation-play-state: paused;
+}
+section form label:hover:before{
+  animation-play-state: running;
+}
+@keyframes hoverArrow {
+  from {transform: translateX(-5px);}
+    to {transform: translateX(5px);}
+}
+section form label:nth-of-type(1):before{
+  display: block;
+  content: '›';
+}
+section form label:after{
+  content: '1/6';
+  position: absolute;
+  top: calc(50vh - 60px);
+  left: calc(-50vw + 60px);
+  transform: translateX(-50%);
+  display: block;
+  color: black;
+  opacity: 0;
+  visibility: visible;
+  text-indent: 0;
+  font-size: 1.25rem;
+  padding: 10px;
+}
+section input:focus + label:after{
+  border: 1px solid black;
+}
+
+section form input:nth-of-type(1) + label:after{
+  content: '1/6';
+}
+section form input:nth-of-type(2) + label:after{
+  content: '2/6';
+}
+section form input:nth-of-type(3) + label:after{
+  content: '3/6';
+}
+section form input:nth-of-type(4) + label:after{
+  content: '4/6';
+}
+section form input:nth-of-type(5) + label:after{
+  content: '5/6';
+}
+section form input:nth-of-type(6) + label:after{
+  content: '6/6';
+}
+section form input:checked + label:after{
+  opacity: 1;
+}
+section{
+  background: linear-gradient(white, #ECECEC);
+}
+section form > span{
+  clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 45% 75%, 15% 100%, 20% 75%, 0% 75%);
+  background: #BDC3C7;
+  display: block;
+  width: 200px;
+  height: 100px;
+  padding: 25px;
+  position: absolute;
+  bottom: 50px;
+  left: calc(50% + 100px);
+  transform: translateX(-50%);
+  z-index: 2;
+  opacity: 0;
+  /* transition: .6s ease-in-out; */
+  animation: animateTooltip 10s forwards;
+  animation-play-state: paused;
+}
+section input:focus ~ span{
+  animation-play-state: running;
+}
+@keyframes animateTooltip {
+  0%{ opacity: 0; }
+  25%{ opacity: 1; }
+  75%{ opacity: 1; }
+  100%{ opacity: 0; }
+}
+section input[value= "1"]:checked ~ article:nth-of-type(1) figcaption{
+  display: block;
+  opacity: 0;
+}
+section input[value= "1"]:checked ~ article:nth-of-type(1):focus-within figcaption{
+  opacity: 1;
+  transform: translateY(0);
+}
+section input[value= "2"]:checked ~ article:nth-of-type(2) figcaption{
+  opacity: 0;
+  display: block;
+}
+section input[value= "2"]:checked ~ article:nth-of-type(2):focus-within figcaption{
+  opacity: 1;
+  display: block;
+}
+section input[value= "3"]:checked ~ article:nth-of-type(3) figcaption{
+  opacity: 0;
+  display: block;
+}
+section input[value= "3"]:checked ~ article:nth-of-type(3):focus-within figcaption{
+  opacity: 1;
+  display: block;
+}
+section input[value= "4"]:checked ~ article:nth-of-type(4) figcaption{
+  opacity: 0;
+  display: block;
+}
+section input[value= "4"]:checked ~ article:nth-of-type(4):focus-within figcaption{
+  opacity: 1;
+  display: block;
+}
+section input[value= "5"]:checked ~ article:nth-of-type(5) figcaption{
+  opacity: 0;
+  display: block;
+}
+section input[value= "5"]:checked ~ article:nth-of-type(5):focus-within figcaption{
+  opacity: 1;
+  display: block;
+}
+section input[value= "6"]:checked ~ article:nth-of-type(6) figcaption{
+  opacity: 0;
+  display: block;
+}
+section input[value= "6"]:checked ~ article:nth-of-type(6):focus-within figcaption{
+  opacity: 1;
+  display: block;
+
 }
