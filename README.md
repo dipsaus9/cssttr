@@ -27,4 +27,4 @@ After 900 lines off CSS and 1 hard week of working I created a CSS only carousel
 It took a long time but by doing so I learned some validation again for the possiblities of CSS. It´s amazing! I highly recommend to challenge yourself by doing these weird challenges!
 
 I also added some cool effects like clipping path and labels with a arrow background. Here is a cool example of the final product.
-![Example of CSS only CAROUSEL](img/example.png)
+![Example of CSS only CAROUSEL](https://github.com/dipsaus9/cssttr/blob/master/img/example.PNG)
