@@ -1,174 +1,908 @@
-@font-face {
-  font-family: "CircularStd";
-  src: url("../fonts/CircularStd-Book.eot?#iefix") format("embedded-opentype"), url("../fonts/CircularStd-Book.woff") format("woff"), url("../fonts/CircularStd-Book.ttf") format("truetype"), url("../fonts/CircularStd-Book.svg#CircularStd") format("svg");
-  font-weight: 400;
-  font-style: normal; }
-
-@font-face {
-  font-family: "CircularStd";
-  src: url("../fonts/CircularStd-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/CircularStd-Bold.woff") format("woff"), url("../fonts/CircularStd-Bold.ttf") format("truetype"), url("../fonts/CircularStd-Bold.svg#CircularStd") format("svg");
-  font-weight: 700;
-  font-style: normal; }
-
-body, html{
-  font-family: CircularStd, sans-serif;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  max-width: 100%;
-  font-size: 100%;
-}
-ul, li {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-h1, h2, h3, h4, h5, h6, figure, p{ margin: 0; }
-
-a{ color: #303030; }
-
-header{ height: 65px;
-  border-bottom: 1px solid black;
-}
-
-header nav{
-  display: flex;
-  max-width: 1280px;
-  margin: 0 auto;
-  justify-content: space-between;
-  padding: 0 1.25rem;
-  /* border: 1px solid red; */
-}
-
-nav h1{
-  font-size: 1rem;
-  text-indent: -9999em;
-  display: block;
-  width: 200px;
-  height: 50px;
-  background-image: url('../img/logo.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: left center;
-}
-
-nav ul{
-  display: flex;
-  height: 65px;
-  align-items: center;
-}
-
-nav ul li ul{ display: none; } /* alleen voor testen */
-
-nav ul li{
-  text-decoration: none;
-  display: flex;
-  height: 100%;
-  align-items: center;
-  padding: 0px 20px;
-}
-
-nav ul li:last-of-type{
-  padding-right: 0;
-}
-
-nav ul li a{
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  outline: none;
-}
-
-a{
-  position: relative;
-  transition: .3s ease-in-out;
-}
-a:after{
-  content: '';
-  display: block;
-  position: absolute;
-  top: calc(100% - 25px);
-  left: 0;
-  width: 0;
-  background-color: #f18764;
-  height: 2px;
-  z-index: 1;
-  transition: .3s ease-in-out;
-}
-a:focus:after, a:hover:after{
-  width: 100%;
-}
+/* styling for home page only after this*/
 section{
   position: relative;
   top: 0;
-  height: calc(100vh - 65px);
+  height: calc(100vh - 4em);
   overflow: hidden;
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
+  width: 100vw;
+  left: 0;
+  max-width: 100%;
 }
 section article{
-  width: 50%;
-  left: 0%;
-  height: 75%;
-  position: absolute;
-  top: 0;
+  width: 50vw;
+  left: 50%;
+  height: calc(100vh - 4em);
+  position: fixed;
+  top: 4em;
   transform: translateX(-50%);
   transition: left .3s ease-in-out;
+  overflow: visible;
 }
-section article:nth-of-type(1){
-  left: 0%;
-  background: purple;
-}
-section:not(:focus-within) article:nth-of-type(1){
-  left: 50%;
-}
-article:nth-of-type(2):has(~ article:focus-within){
-  background: red!important;
-}
-section article:last-of-type{
-  background: orange!important;
-}
-section article ~ article{
-  left: 100%;
-}
-section article:nth-of-type(2){
-  background: green;
-  z-index: 1;
-}
-section article:nth-of-type(3){
-  background: blue;
+
+section article div{
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left: -25vw;
+  top: 0;
+  transform: translateX(-25vw);
+  transition: .3s;
 }
 
 article figure{
-  height: 100%;
-  display: none;
-}
-article > footer{
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  display: flex;
-  border: 1px solid blue;
   width: 100%;
   height: 100%;
-  z-index: -1;
-  justify-content: center;
-  align-items: center;
+  display: block;
+  position: relative;
+  clip-path: inset(10em 15%);
   transition: .3s ease-in-out;
 }
-article ~ article > footer{
-  left: -100%;
+article figure h1, article figure p{
+  position: absolute;
+  z-index: 2;
+  bottom: 100px;
+  left: 50%;
+  width: 90%;
+  left: 5%;
+  background: white;
+  padding: 15px;
+  display: none;
+}
+article figure p{
+  opacity: 0;
+  display: block;
+  font-size: 1rem;
+}
+article figure h1{
+  bottom: auto;
+  top: 75px;
+  font-size: 1.5rem;
+}
+article figure a{
+  font-size: inherit;
+  text-decoration: none;
+  border-left: 5px solid var(--hover-color);
+  padding-left: 10px;
+  outline: none;
+}
+article figure a:focus{
+  outline: 2px solid var(--hover-color);
+}
+section article:nth-of-type(1) div{
+  background-image: url('../img/1.jpg');
+}
+section article:nth-of-type(2) div{
+  background-image: url('../img/2.jpg');
+}
+section article:nth-of-type(3) div{
+  background-image: url('../img/3.jpg');
+}
+section article:nth-of-type(4) div{
+  background-image: url('../img/4.jpg');
+}
+section article:nth-of-type(5) div{
+  background-image: url('../img/5.jpg');
+}
+section article:nth-of-type(6) div{
+  background-image: url('../img/6.jpeg');
+}
+section article:nth-of-type(7) div{
+  background-image: url('../img/7.jpeg');
 }
 
-article > footer:focus-within{
+/* 1 active */
+section input[value="1"]:checked ~ article:nth-of-type(1){
+  z-index: 1;
+  left: 50vw;
+  transition: .3s;
+}
+section input[value="1"]:checked ~ article:nth-of-type(1) div{
   z-index: 1;
   left: 0;
 }
-
-section article:focus-within{
-  opacity: 1;
-  left: 50%;
-  z-index: 2;
+section input[value="1"]:checked ~ label:nth-of-type(1){
+  pointer-events: none;
+  visibility: hidden;
+  left: auto;
+  right: 1.875em;
 }
+
+
+/* 2 */
+section input[value="1"]:checked ~ article:nth-of-type(2){
+  z-index: 0;
+  left: 100vw;
+  transition: .3s;
+}
+section input[value="1"]:checked ~ article:nth-of-type(2) div{
+  z-index: 1;
+  left: -50vw;
+}
+section input[value="1"]:checked ~ label:nth-of-type(2){
+  visibility: visible;
+  pointer-events: all;
+  left: auto;
+  right: 1.875em;
+}
+/* 3 */
+section input[value="1"]:checked ~ article:nth-of-type(3){
+  z-index: 0;
+  left: 150vw;
+  transition: 0s;
+}
+section input[value="1"]:checked ~ article:nth-of-type(3) div{
+  z-index: 1;
+  left: -100vw;
+}
+section input[value="1"]:checked ~ label:nth-of-type(3){
+  pointer-events: none;
+  visibility: hidden;
+}
+
+
+/* 4 */
+section input[value="1"]:checked ~ article:nth-of-type(4){
+  z-index: 0;
+  left: -100vw;
+  transition: 0s;
+}
+section input[value="1"]:checked ~ article:nth-of-type(4) div{
+  z-index: 1;
+  left: 150vw;
+}
+section input[value="1"]:checked ~ label:nth-of-type(4){
+  pointer-events: none;
+  visibility: hidden;
+}
+
+
+/* 5 */
+section input[value="1"]:checked ~ article:nth-of-type(5){
+  z-index: 0;
+  left: -50vw;
+  transition: .3s;
+}
+section input[value="1"]:checked ~ article:nth-of-type(5) div{
+  z-index: 1;
+  left: 100vw;
+}
+section input[value="1"]:checked ~ label:nth-of-type(5){
+  pointer-events: none;
+  visibility: hidden;
+}
+
+
+/* 6 */
+section input[value="1"]:checked ~ article:nth-of-type(6){
+  z-index: 0;
+  left: 0vw;
+  transition: .3s;
+}
+section input[value="1"]:checked ~ article:nth-of-type(6) div{
+  z-index: 1;
+  left: 50vw;
+}
+section input[value="1"]:checked ~ label:nth-of-type(6){
+  visibility: visible;
+  pointer-events: all;
+  left: 1.875em;
+  right: auto;
+}
+
+
+/* 2 active */
+section input[value="2"]:checked ~ article:nth-of-type(1){
+  z-index: 0;
+  left: 0;
+  transition: .3s;
+}
+section input[value="2"]:checked ~ article:nth-of-type(1) div{
+  z-index: 1;
+  left: 50vw;
+}
+section input[value="2"]:checked ~ label:nth-of-type(1){
+  pointer-events: all;
+  visibility: visible;
+  left: 1.875em;
+  right: auto;
+}
+
+/* 2 */
+section input[value="2"]:checked ~ article:nth-of-type(2){
+  z-index: 1;
+  left: 50vw;
+  transition: .3s;
+}
+section input[value="2"]:checked ~ article:nth-of-type(2) div{
+  z-index: 1;
+  left: 0vw;
+}
+section input[value="2"]:checked ~ label:nth-of-type(2){
+  visibility: hidden;
+  left: auto;
+  right: 1.875em;
+  pointer-events: none;
+}
+section input[value="2"]:checked ~ label:last-of-type{
+  visibility: visible;
+  left: 1.875em;
+  right: auto;
+  pointer-events: all;
+}
+
+
+/* 3 */
+section input[value="2"]:checked ~ article:nth-of-type(3){
+  z-index: 0;
+  left: 100vw;
+  transition: .3s;
+}
+section input[value="2"]:checked ~ article:nth-of-type(3) div{
+  z-index: 1;
+  left: -50vw;
+}
+section input[value="2"]:checked ~ label:nth-of-type(3){
+  pointer-events: all;
+  visibility: visible;
+  left: auto;
+  right: 1.875em;;
+}
+
+
+/* 4 */
+section input[value="2"]:checked ~ article:nth-of-type(4){
+  z-index: 0;
+  left: 150vw;
+  transition: 0s;
+}
+section input[value="2"]:checked ~ article:nth-of-type(4) div{
+  z-index: 1;
+  left: -100vw;
+}
+section input[value="2"]:checked ~ label:nth-of-type(4){
+  visibility: hidden;
+  left: auto;
+  right: 1.875em;
+  pointer-events: none;
+}
+
+
+
+/* 5 */
+section input[value="2"]:checked ~ article:nth-of-type(5){
+  z-index: 0;
+  left: -100vw;
+  transition: 0s;
+}
+section input[value="2"]:checked ~ article:nth-of-type(5) div{
+  z-index: 1;
+  left: 150vw;
+}
+section input[value="2"]:checked ~ label:nth-of-type(5){
+  visibility: hidden;
+  left: auto;
+  right: 1.875em;
+  pointer-events: none;
+}
+
+
+/* 6 */
+section input[value="2"]:checked ~ article:nth-of-type(6){
+  z-index: 0;
+  left: -50vw;
+  transition: .3s;
+}
+section input[value="2"]:checked ~ article:nth-of-type(6) div{
+  z-index: 1;
+  left: 100vw;
+}
+section input[value="2"]:checked ~ label:nth-of-type(6){
+  visibility: hidden;
+  left: auto;
+  right: 1.875em;
+  pointer-events: none;
+}
+
+
+/* 3 active */
+section input[value="3"]:checked ~ article:nth-of-type(1){
+  z-index: 0;
+  left: -50vw;
+  transition: .3s;
+}
+section input[value="3"]:checked ~ article:nth-of-type(1) div{
+  z-index: 1;
+  left: 100vw;
+}
+section input[value="3"]:checked ~ label:nth-of-type(1){
+  visibility: hidden;
+  left: auto;
+  right: 1.875em;
+  pointer-events: none;
+}
+
+/* 2 */
+section input[value="3"]:checked ~ article:nth-of-type(2){
+  z-index: 0;
+  left: 0vw;
+  transition: .3s;
+}
+section input[value="3"]:checked ~ article:nth-of-type(2) div{
+  z-index: 1;
+  left: 50vw;
+}
+section input[value="3"]:checked ~ label:nth-of-type(2){
+  visibility: visible;
+  left: 1.875em;
+  right: auto;
+  pointer-events: all;
+}
+
+/* 3 */
+section input[value="3"]:checked ~ article:nth-of-type(3){
+  z-index: 0;
+  left: 50vw;
+  transition: .3s;
+}
+section input[value="3"]:checked ~ article:nth-of-type(3) div{
+  z-index: 1;
+  left: 0vw;
+}
+section input[value="3"]:checked ~ label:nth-of-type(3){
+  visibility: hidden;
+  left: auto;
+  right: 1.875em;
+  pointer-events: none;
+}
+
+/* 4 */
+section input[value="3"]:checked ~ article:nth-of-type(4){
+  z-index: 0;
+  left: 100vw;
+  transition: .3s;
+}
+section input[value="3"]:checked ~ article:nth-of-type(4) div{
+  z-index: 1;
+  left: -50vw;
+}
+section input[value="3"]:checked ~ label:nth-of-type(4){
+  visibility: visible;
+  left: auto;
+  right: 1.875em;
+  pointer-events: all;
+}
+
+/* 5 */
+section input[value="3"]:checked ~ article:nth-of-type(5){
+  z-index: 0;
+  left: 150vw;
+  transition: 0s;
+}
+section input[value="3"]:checked ~ article:nth-of-type(5) div{
+  z-index: 1;
+  left: -100vw;
+}
+section input[value="3"]:checked ~ label:nth-of-type(5){
+  visibility: hidden;
+  left: auto;
+  right: 1.875em;
+  pointer-events: none;
+}
+
+
+/* 6 */
+section input[value="3"]:checked ~ article:nth-of-type(6){
+  z-index: 0;
+  left: -100vw;
+  transition: 0s;
+}
+section input[value="3"]:checked ~ article:nth-of-type(6) div{
+  z-index: 1;
+  left: 150vw;
+}
+section input[value="3"]:checked ~ label:nth-of-type(6){
+  visibility: hidden;
+  left: auto;
+  right: 1.875em;
+  pointer-events: none;
+}
+
+/* 4  active */
+section input[value="4"]:checked ~ article:nth-of-type(1){
+  z-index: 0;
+  left: -100vw;
+  transition: 0s;
+}
+section input[value="4"]:checked ~ article:nth-of-type(1) div{
+  z-index: 1;
+  left: 150vw;
+}
+section input[value="4"]:checked ~ label:nth-of-type(1){
+  visibility: hidden;
+  left: auto;
+  right: 1.875em;
+  pointer-events: none;
+}
+
+/* 2 */
+section input[value="4"]:checked ~ article:nth-of-type(2){
+  z-index: 0;
+  left: -50vw;
+  transition: .3s;
+}
+section input[value="4"]:checked ~ article:nth-of-type(2) div{
+  z-index: 1;
+  left: 100vw;
+}
+section input[value="4"]:checked ~ label:nth-of-type(2){
+  visibility: hidden;
+  left: auto;
+  right: 1.875em;
+  pointer-events: none;
+}
+
+/* 3 */
+section input[value="4"]:checked ~ article:nth-of-type(3){
+  z-index: 0;
+  left: 0;
+  transition: .3s;
+}
+section input[value="4"]:checked ~ article:nth-of-type(3) div{
+  z-index: 1;
+  left: 50vw;
+}
+section input[value="4"]:checked ~ label:nth-of-type(3){
+  visibility: visible;
+  left: 1.875em;
+  right: auto;
+  pointer-events: all;
+}
+
+/* 4 */
+section input[value="4"]:checked ~ article:nth-of-type(4){
+  z-index: 0;
+  left: 50vw;
+  transition: .3s;
+}
+section input[value="4"]:checked ~ article:nth-of-type(4) div{
+  z-index: 1;
+  left: -0;
+}
+section input[value="4"]:checked ~ label:nth-of-type(4){
+  visibility: hidden;
+  left: auto;
+  right: 1.875em;
+  pointer-events: none;
+}
+/* 5 */
+section input[value="4"]:checked ~ article:nth-of-type(5){
+  z-index: 0;
+  left: 100vw;
+  transition: .3s;
+}
+section input[value="4"]:checked ~ article:nth-of-type(5) div{
+  z-index: 1;
+  left: -50vw;
+}
+section input[value="4"]:checked ~ label:nth-of-type(5){
+  visibility: visible;
+  left: auto;
+  right: 1.875em;
+  pointer-events: all;
+}
+/* 6 */
+section input[value="4"]:checked ~ article:nth-of-type(6){
+  z-index: 0;
+  left: 150vw;
+  transition: 0s;
+}
+section input[value="4"]:checked ~ article:nth-of-type(6) div{
+  z-index: 1;
+  left: -100vw;
+}
+section input[value="4"]:checked ~ label:nth-of-type(6){
+  visibility: hidden;
+  left: auto;
+  right: 1.875em;
+  pointer-events: none;
+}
+
+
+
+/* 5  active */
+section input[value="5"]:checked ~ article:nth-of-type(1){
+  z-index: 0;
+  left: 150vw;
+  transition: 0s;
+}
+section input[value="5"]:checked ~ article:nth-of-type(1) div{
+  z-index: 1;
+  left: -100vw;
+}
+
+/* 2 */
+section input[value="5"]:checked ~ article:nth-of-type(2){
+  z-index: 0;
+  left: -100vw;
+  transition: 0s;
+}
+section input[value="5"]:checked ~ article:nth-of-type(2) div{
+  z-index: 1;
+  left: 150vw;
+}
+
+/* 3 */
+section input[value="5"]:checked ~ article:nth-of-type(3){
+  z-index: 0;
+  left: -50vw;
+  transition: .3s;
+}
+section input[value="5"]:checked ~ article:nth-of-type(3) div{
+  z-index: 1;
+  left: 100vw;
+}
+/* 4 */
+section input[value="5"]:checked ~ article:nth-of-type(4){
+  z-index: 0;
+  left: 0vw;
+  transition: .3s;
+}
+section input[value="5"]:checked ~ article:nth-of-type(4) div{
+  z-index: 1;
+  left: 50vw;
+}
+section input[value="5"]:checked ~ label:nth-of-type(4){
+  visibility: visible;
+  left: 1.875em;
+  right: auto;
+  pointer-events: all;
+}
+/* 5 */
+section input[value="5"]:checked ~ article:nth-of-type(5){
+  z-index: 0;
+  left: 50vw;
+  transition: .3s;
+}
+section input[value="5"]:checked ~ article:nth-of-type(5) div{
+  z-index: 1;
+  left: 0vw;
+}
+section input[value="5"]:checked ~ label:nth-of-type(5){
+  visibility: hidden;
+  left: auto;
+  right: 1.875em;
+  pointer-events: none;
+}
+/* 6 */
+section input[value="5"]:checked ~ article:nth-of-type(6){
+  z-index: 0;
+  left: 100vw;
+  transition: .3s;
+}
+section input[value="5"]:checked ~ article:nth-of-type(6) div{
+  z-index: 1;
+  left: -50vw;
+}
+section input[value="5"]:checked ~ label:nth-of-type(6){
+  visibility: visible;
+  left: auto;
+  right: 1.875em;
+  pointer-events: all;
+}
+
+/* 6  active */
+section input[value="6"]:checked ~ article:nth-of-type(1){
+  z-index: 0;
+  left: 100vw;
+  transition: .3s;
+}
+section input[value="6"]:checked ~ article:nth-of-type(1) div{
+  z-index: 1;
+  left: -50vw;
+}
+/* 2 */
+section input[value="6"]:checked ~ article:nth-of-type(2){
+  z-index: 0;
+  left: 150vw;
+  transition: 0s;
+}
+section input[value="6"]:checked ~ article:nth-of-type(2) div{
+  z-index: 1;
+  left: -100vw;
+}
+
+/* 3 */
+section input[value="6"]:checked ~ article:nth-of-type(3){
+  z-index: 0;
+  left: -100vw;
+  transition: 0s;
+}
+section input[value="6"]:checked ~ article:nth-of-type(3) div{
+  z-index: 1;
+  left: 150vw;
+}
+/* 4 */
+section input[value="6"]:checked ~ article:nth-of-type(4){
+  z-index: 0;
+  left: -50vw;
+  transition: .3s;
+}
+section input[value="6"]:checked ~ article:nth-of-type(4) div{
+  z-index: 1;
+  left: 100vw;
+}
+/* 5 */
+section input[value="6"]:checked ~ article:nth-of-type(5){
+  z-index: 0;
+  left: 0vw;
+  transition: .3s;
+}
+section input[value="6"]:checked ~ article:nth-of-type(5) div{
+  z-index: 1;
+  left: 50vw;
+}
+/* 6 */
+section input[value="6"]:checked ~ article:nth-of-type(6){
+  z-index: 0;
+  left: 50vw;
+  transition: .3s;
+}
+section input[value="6"]:checked ~ article:nth-of-type(6) div{
+  z-index: 1;
+  left: 0;
+}
+section input[value="6"]:checked ~ label:nth-of-type(6){
+  visibility: hidden;
+  left: auto;
+  right: 1.875em;
+  pointer-events: none;
+}
+
+section input[value= "1"]:checked ~ article:nth-of-type(1) figure{
+  clip-path: inset(75px 5% 100px);
+}
+section input[value="1"]:checked ~ label:nth-of-type(2):before{
+    content: '›';
+    display: block;
+}
+section input[value= "2"]:checked ~ article:nth-of-type(2) figure{
+  clip-path: inset(75px 5% 100px);
+}
+section input[value="2"]:checked ~ label:nth-of-type(3):before{
+    content: '›';
+    display: block;
+}
+section input[value= "3"]:checked ~ article:nth-of-type(3) figure{
+  clip-path: inset(75px 5% 100px);
+}
+section input[value="3"]:checked ~ label:nth-of-type(4):before{
+    content: '›';
+    display: block;
+}
+section input[value= "4"]:checked ~ article:nth-of-type(4) figure{
+  clip-path: inset(75px 5% 100px);
+}
+section input[value="4"]:checked ~ label:nth-of-type(5):before{
+    content: '›';
+    display: block;
+}
+section input[value= "5"]:checked ~ article:nth-of-type(5) figure{
+  clip-path: inset(75px 5% 100px);
+}
+section input[value="5"]:checked ~ label:nth-of-type(6):before{
+    content: '›';
+    display: block;
+}
+section input[value= "6"]:checked ~ article:nth-of-type(6) figure{
+  clip-path: inset(75px 5% 100px);
+}
+section input[value="6"]:checked ~ label:nth-of-type(7):before{
+    content: '›';
+    display: block;
+}
+
+section input:nth-of-type(1):not(:checked) + label{
+  visibility: visible;
+  right: 1.875em;
+  left: auto;
+  pointer-events: all;
+}
+section label:nth-of-type(7){
+  visibility: hidden;
+  pointer-events: none;
+}
+section article form input{
+  position: absolute;
+}
+section form{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+}
+
+section form input{
+  position: absolute;
+  opacity: 0;
+}
+
+section form label{
+  position: absolute;
+  opacity: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  color: white;
+  text-align: center;
+  left: 1.875em;
+  right: auto;
+  text-indent: -9999px;
+  cursor: pointer;
+  width: 2.5em;
+  height: 2.5em;
+}
+section form label:before{
+  content: '‹';
+  text-indent: 0;
+  font-size: 6rem;
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 0.4;
+  animation: hoverArrow 1s alternate-reverse infinite;
+  animation-play-state: paused;
+}
+section form label:hover:before{
+  animation-play-state: running;
+}
+@keyframes hoverArrow {
+  from {transform: translateX(-5px);}
+    to {transform: translateX(5px);}
+}
+section form label:nth-of-type(1):before{
+  display: block;
+  content: '›';
+}
+section form label:after{
+  content: '1/6';
+  position: absolute;
+  top: calc(50vh - 60px);
+  left: calc(-50vw + 60px);
+  transform: translateX(-50%);
+  display: block;
+  color: black;
+  opacity: 0;
+  visibility: visible;
+  text-indent: 0;
+  font-size: 1.25rem;
+  padding: 10px;
+}
+section input:focus + label:after{
+  border: 1px solid black;
+}
+
+section form input:nth-of-type(1) + label:after{
+  content: '1/6';
+}
+section form input:nth-of-type(2) + label:after{
+  content: '2/6';
+}
+section form input:nth-of-type(3) + label:after{
+  content: '3/6';
+}
+section form input:nth-of-type(4) + label:after{
+  content: '4/6';
+}
+section form input:nth-of-type(5) + label:after{
+  content: '5/6';
+}
+section form input:nth-of-type(6) + label:after{
+  content: '6/6';
+}
+section form input:checked + label:after{
+  opacity: 1;
+}
+section{
+  background: linear-gradient(white, #ECECEC);
+}
+section form > span{
+  clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 45% 75%, 15% 100%, 20% 75%, 0% 75%);
+  background: #BDC3C7;
+  display: block;
+  width: 12.5em;
+  height: 6.25em;
+  padding: 20px 25px 40px;
+  position: absolute;
+  bottom: 50px;
+  left: calc(50% + 100px);
+  transform: translateX(-50%);
+  z-index: 2;
+  opacity: 0;
+  /* transition: .6s ease-in-out; */
+  color: black;
+  animation: animateTooltip 10s forwards;
+  animation-play-state: paused;
+}
+section:focus-within span{
+  animation-play-state: running;
+}
+@keyframes animateTooltip {
+  0%{ opacity: 0; }
+  25%{ opacity: 1; }
+  75%{ opacity: 1; }
+  100%{ opacity: 0; }
+}
+section input[value= "1"]:checked ~ article:nth-of-type(1) h1{
+  display: block;
+}
+
+section input[value= "2"]:checked ~ article:nth-of-type(2) h1{
+  display: block;
+}
+
+section input[value= "3"]:checked ~ article:nth-of-type(3) h1{
+  display: block;
+}
+section input[value= "4"]:checked ~ article:nth-of-type(4) h1{
+  display: block;
+}
+section input[value= "5"]:checked ~ article:nth-of-type(5) h1{
+  display: block;
+}
+section input[value= "6"]:checked ~ article:nth-of-type(6) h1{
+  display: block;
+}
+body section:first-of-type{ margin-top: 0; padding: 0; }
+article figure h1:focus-within ~ p {
+  opacity: 1;
+}
+article figure div{
+  transition: .3s ease-in-out;
+  /* misschien later uit zetten, even checken of dit mooi is */
+}
+article figure div:after{
+  position: absolute;
+  left: 50vw;
+  top: calc(50% - 75px);
+  transform: translate(-50%, 0);
+  display: inline-block;
+  text-align: center;
+  content: 'Om dit schilderij te bestellen klik op enter. Om terug te gaan naar de slider gebruik "shit + tab"';
+  opacity: 0;
+  color: white;
+  transition: .3s ease-in-out;
+  font-size: 1.25rem;
+}
+article figure h1:focus-within + div{
+  animation: fadeOutBg .5s forwards 2s;
+}
+article figure div:before{
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: black;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+article figure h1:focus-within + div:before{
+  opacity: .5;
+  animation: fadeOut .6s forwards 4s;
+}
+article figure h1:focus-within + div:after{
+  opacity: 1;
+  animation: fadeOut .6s forwards 4s;
+}
+@keyframes fadeOut {
+  from{ opacity: 1; }
+  to{ opacity: 0; }
+};

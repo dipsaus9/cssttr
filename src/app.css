@@ -9,7 +9,10 @@
   src: url("../fonts/CircularStd-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/CircularStd-Bold.woff") format("woff"), url("../fonts/CircularStd-Bold.ttf") format("truetype"), url("../fonts/CircularStd-Bold.svg#CircularStd") format("svg");
   font-weight: 700;
   font-style: normal; }
+:root{
+   --hover-color: #f18764;
 
+}
 body, html{
   font-family: CircularStd, sans-serif;
   margin: 0;
@@ -38,7 +41,6 @@ header nav{
   justify-content: space-between;
   padding: 0 1.25rem;
   z-index: 2;
-  position: relative;
 }
 
 nav h1{
@@ -59,8 +61,98 @@ nav ul{
   align-items: center;
 }
 
-nav ul li ul{ display: none; } /* disabled second nav */
+nav ul li ul{
+  display: block;
+  position: absolute;
+} /* disabled second nav */
+nav ul li ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  position: absolute;
+  left: 50%;
+  width: 100vw;
+  max-width: 1280px;
+  transform: translateX(-50%);
+  grid-gap: 20px;
+  padding: 0px 20px;
+  top: 65px;
+  height: 0px;
+  overflow: hidden;
+  transition: .3s ease-in-out;
+  z-index: 3;
+}
+nav ul li:hover ul, nav ul li:focus-within ul{
+  height: 250px;
+}
 
+nav ul li a:first-child:nth-last-child(2){
+  position: static;
+}
+nav ul li a:first-child:nth-last-child(2):after{
+  content: '';
+  width: 100vw;
+  background: linear-gradient(white, #ECECEC);
+  z-index: 0;
+  height: 0px;
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  top: calc(4em + 1px);
+  max-width: 100%;
+  transition: .3s ease-in-out;
+}
+nav ul li:focus-within a:first-child:nth-last-child(2):after, nav ul li:hover a:first-child:nth-last-child(2):after{
+  height: 250px;
+  border-bottom: 1px solid black;
+}
+
+nav ul li ul li {
+  background: #FFF;
+  height: 200px;
+  position: relative;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7)), url("../img/350x150.png");
+  background-size: cover;
+  display: inline-block;
+  background-position: center;
+  padding: 0px 1.25em 1.25em;
+}
+
+nav ul li ul li a {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  left: 0;
+  top: auto;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  transition: .3s ease-in-out;
+  color: #FFF;
+  line-height: 2;
+}
+nav ul li ul li a:before{
+  top: 100%;
+}
+
+nav ul li a:before {
+  content: none;
+}
+nav ul li a{
+  box-shadow: inset 0 0px 0 white, inset 0px 0px 0 var(--hover-color);
+}
+nav ul li a:hover, nav ul li a:focus{
+  box-shadow: inset 0 0px 0 white, inset 0px -5px 0 var(--hover-color);
+}
+nav ul li a[aria-label*="current"]{
+  box-shadow: inset 0 0px 0 white, inset 0px -5px 0 #663399  ;
+}
+nav ul li:focus-within a[aria-label*="current"], nav ul li:hover a[aria-label*="current page"]{
+  border-bottom: 10px solid var(--hover-color);
+}
 nav ul li{
   text-decoration: none;
   display: flex;
@@ -80,902 +172,86 @@ nav ul li a{
   height: 100%;
   outline: none;
 }
-
+nav ul li ul li[title="rock"] {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7)), url("../img/rock.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+nav ul li ul li[title="paper"] {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7)), url("../img/paper.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+nav ul li ul li[title="scissor"] {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7)), url("../img/scissor.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 0px 1.25em 1.25em;
+}
 a{
   position: relative;
   transition: .3s ease-in-out;
 }
-a:after{
+a:before{
   content: '';
   display: block;
   position: absolute;
-  top: calc(100% - 25px);
+  top: 100%;
   left: 0;
   width: 0;
-  background-color: #f18764;
+  background-color: var(--hover-color);
   height: 2px;
   z-index: 1;
   transition: .3s ease-in-out;
 }
-a:focus:after, a:hover:after{
+a:focus:before, a:hover:before{
   width: 100%;
 }
 
-/* styling for home page only after this*/
 section{
-  position: relative;
-  top: 0;
-  height: calc(100vh - 4em);
-  overflow: hidden;
   width: 100%;
-  display: flex;
-  flex-wrap: nowrap;
-  width: 100vw;
-  left: 0;
   max-width: 100%;
-}
-section article{
-  width: 50vw;
-  left: 50%;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  transform: translateX(-50%);
-  transition: left .3s ease-in-out;
-  overflow: visible;
-}
-
-section article div{
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  left: -25vw;
-  top: 0;
-  transform: translateX(-25vw);
-  transition: .3s;
-}
-
-article figure{
-  width: 100%;
-  height: 100%;
-  display: block;
-  position: relative;
-  clip-path: inset(10em 15%);
-  transition: .3s ease-in-out;
-}
-article figure figcaption{
-  position: absolute;
-  z-index: 2;
-  bottom: 100px;
-  left: 50%;
-  width: 90%;
-  left: 5%;
-  background: white;
-  padding: 15px;
-  display: none;
-  opacity: 0;
-}
-article figure figcaption a:after{
-  top: 100%;
-}
-figcaption a{
-  text-decoration: none;
-  outline: none;
-}
-article figure figcaption footer{
-  font-size: .8rem;
-}
-section article:nth-of-type(1) div{
-  background-image: url('../img/1.jpg');
-}
-section article:nth-of-type(2) div{
-  background-image: url('../img/2.jpg');
-}
-section article:nth-of-type(3) div{
-  background-image: url('../img/3.jpg');
-}
-section article:nth-of-type(4) div{
-  background-image: url('../img/4.jpg');
-}
-section article:nth-of-type(5) div{
-  background-image: url('../img/5.jpg');
-}
-section article:nth-of-type(6) div{
-  background-image: url('../img/6.jpeg');
-}
-section article:nth-of-type(7) div{
-  background-image: url('../img/7.jpeg');
-}
-
-/* 1 active */
-section input[value="1"]:checked ~ article:nth-of-type(1){
-  z-index: 1;
-  left: 50vw;
-  transition: .3s;
-}
-section input[value="1"]:checked ~ article:nth-of-type(1) div{
-  z-index: 1;
-  left: 0;
-}
-section input[value="1"]:checked ~ label:nth-of-type(1){
-  pointer-events: none;
-  visibility: hidden;
-  left: auto;
-  right: 1.875em;
-}
-
-
-/* 2 */
-section input[value="1"]:checked ~ article:nth-of-type(2){
-  z-index: 0;
-  left: 100vw;
-  transition: .3s;
-}
-section input[value="1"]:checked ~ article:nth-of-type(2) div{
-  z-index: 1;
-  left: -50vw;
-}
-section input[value="1"]:checked ~ label:nth-of-type(2){
-  visibility: visible;
-  pointer-events: all;
-  left: auto;
-  right: 1.875em;
-}
-/* 3 */
-section input[value="1"]:checked ~ article:nth-of-type(3){
-  z-index: 0;
-  left: 150vw;
-  transition: 0s;
-}
-section input[value="1"]:checked ~ article:nth-of-type(3) div{
-  z-index: 1;
-  left: -100vw;
-}
-section input[value="1"]:checked ~ label:nth-of-type(3){
-  pointer-events: none;
-  visibility: hidden;
-}
-
-
-/* 4 */
-section input[value="1"]:checked ~ article:nth-of-type(4){
-  z-index: 0;
-  left: -100vw;
-  transition: 0s;
-}
-section input[value="1"]:checked ~ article:nth-of-type(4) div{
-  z-index: 1;
-  left: 150vw;
-}
-section input[value="1"]:checked ~ label:nth-of-type(4){
-  pointer-events: none;
-  visibility: hidden;
-}
-
-
-/* 5 */
-section input[value="1"]:checked ~ article:nth-of-type(5){
-  z-index: 0;
-  left: -50vw;
-  transition: .3s;
-}
-section input[value="1"]:checked ~ article:nth-of-type(5) div{
-  z-index: 1;
-  left: 100vw;
-}
-section input[value="1"]:checked ~ label:nth-of-type(5){
-  pointer-events: none;
-  visibility: hidden;
-}
-
-
-/* 6 */
-section input[value="1"]:checked ~ article:nth-of-type(6){
-  z-index: 0;
-  left: 0vw;
-  transition: .3s;
-}
-section input[value="1"]:checked ~ article:nth-of-type(6) div{
-  z-index: 1;
-  left: 50vw;
-}
-section input[value="1"]:checked ~ label:nth-of-type(6){
-  visibility: visible;
-  pointer-events: all;
-  left: 1.875em;
-  right: auto;
-}
-
-
-/* 2 active */
-section input[value="2"]:checked ~ article:nth-of-type(1){
-  z-index: 0;
-  left: 0;
-  transition: .3s;
-}
-section input[value="2"]:checked ~ article:nth-of-type(1) div{
-  z-index: 1;
-  left: 50vw;
-}
-section input[value="2"]:checked ~ label:nth-of-type(1){
-  pointer-events: all;
-  visibility: visible;
-  left: 1.875em;
-  right: auto;
-}
-
-/* 2 */
-section input[value="2"]:checked ~ article:nth-of-type(2){
-  z-index: 1;
-  left: 50vw;
-  transition: .3s;
-}
-section input[value="2"]:checked ~ article:nth-of-type(2) div{
-  z-index: 1;
-  left: 0vw;
-}
-section input[value="2"]:checked ~ label:nth-of-type(2){
-  visibility: hidden;
-  left: auto;
-  right: 1.875em;
-  pointer-events: none;
-}
-section input[value="2"]:checked ~ label:last-of-type{
-  visibility: visible;
-  left: 1.875em;
-  right: auto;
-  pointer-events: all;
-}
-
-
-/* 3 */
-section input[value="2"]:checked ~ article:nth-of-type(3){
-  z-index: 0;
-  left: 100vw;
-  transition: .3s;
-}
-section input[value="2"]:checked ~ article:nth-of-type(3) div{
-  z-index: 1;
-  left: -50vw;
-}
-section input[value="2"]:checked ~ label:nth-of-type(3){
-  pointer-events: all;
-  visibility: visible;
-  left: auto;
-  right: 1.875em;;
-}
-
-
-/* 4 */
-section input[value="2"]:checked ~ article:nth-of-type(4){
-  z-index: 0;
-  left: 150vw;
-  transition: 0s;
-}
-section input[value="2"]:checked ~ article:nth-of-type(4) div{
-  z-index: 1;
-  left: -100vw;
-}
-section input[value="2"]:checked ~ label:nth-of-type(4){
-  visibility: hidden;
-  left: auto;
-  right: 1.875em;
-  pointer-events: none;
-}
-
-
-
-/* 5 */
-section input[value="2"]:checked ~ article:nth-of-type(5){
-  z-index: 0;
-  left: -100vw;
-  transition: 0s;
-}
-section input[value="2"]:checked ~ article:nth-of-type(5) div{
-  z-index: 1;
-  left: 150vw;
-}
-section input[value="2"]:checked ~ label:nth-of-type(5){
-  visibility: hidden;
-  left: auto;
-  right: 1.875em;
-  pointer-events: none;
-}
-
-
-/* 6 */
-section input[value="2"]:checked ~ article:nth-of-type(6){
-  z-index: 0;
-  left: -50vw;
-  transition: .3s;
-}
-section input[value="2"]:checked ~ article:nth-of-type(6) div{
-  z-index: 1;
-  left: 100vw;
-}
-section input[value="2"]:checked ~ label:nth-of-type(6){
-  visibility: hidden;
-  left: auto;
-  right: 1.875em;
-  pointer-events: none;
-}
-
-
-/* 3 active */
-section input[value="3"]:checked ~ article:nth-of-type(1){
-  z-index: 0;
-  left: -50vw;
-  transition: .3s;
-}
-section input[value="3"]:checked ~ article:nth-of-type(1) div{
-  z-index: 1;
-  left: 100vw;
-}
-section input[value="3"]:checked ~ label:nth-of-type(1){
-  visibility: hidden;
-  left: auto;
-  right: 1.875em;
-  pointer-events: none;
-}
-
-/* 2 */
-section input[value="3"]:checked ~ article:nth-of-type(2){
-  z-index: 0;
-  left: 0vw;
-  transition: .3s;
-}
-section input[value="3"]:checked ~ article:nth-of-type(2) div{
-  z-index: 1;
-  left: 50vw;
-}
-section input[value="3"]:checked ~ label:nth-of-type(2){
-  visibility: visible;
-  left: 1.875em;
-  right: auto;
-  pointer-events: all;
-}
-
-/* 3 */
-section input[value="3"]:checked ~ article:nth-of-type(3){
-  z-index: 0;
-  left: 50vw;
-  transition: .3s;
-}
-section input[value="3"]:checked ~ article:nth-of-type(3) div{
-  z-index: 1;
-  left: 0vw;
-}
-section input[value="3"]:checked ~ label:nth-of-type(3){
-  visibility: hidden;
-  left: auto;
-  right: 1.875em;
-  pointer-events: none;
-}
-
-/* 4 */
-section input[value="3"]:checked ~ article:nth-of-type(4){
-  z-index: 0;
-  left: 100vw;
-  transition: .3s;
-}
-section input[value="3"]:checked ~ article:nth-of-type(4) div{
-  z-index: 1;
-  left: -50vw;
-}
-section input[value="3"]:checked ~ label:nth-of-type(4){
-  visibility: visible;
-  left: auto;
-  right: 1.875em;
-  pointer-events: all;
-}
-
-/* 5 */
-section input[value="3"]:checked ~ article:nth-of-type(5){
-  z-index: 0;
-  left: 150vw;
-  transition: 0s;
-}
-section input[value="3"]:checked ~ article:nth-of-type(5) div{
-  z-index: 1;
-  left: -100vw;
-}
-section input[value="3"]:checked ~ label:nth-of-type(5){
-  visibility: hidden;
-  left: auto;
-  right: 1.875em;
-  pointer-events: none;
-}
-
-
-/* 6 */
-section input[value="3"]:checked ~ article:nth-of-type(6){
-  z-index: 0;
-  left: -100vw;
-  transition: 0s;
-}
-section input[value="3"]:checked ~ article:nth-of-type(6) div{
-  z-index: 1;
-  left: 150vw;
-}
-section input[value="3"]:checked ~ label:nth-of-type(6){
-  visibility: hidden;
-  left: auto;
-  right: 1.875em;
-  pointer-events: none;
-}
-
-/* 4  active */
-section input[value="4"]:checked ~ article:nth-of-type(1){
-  z-index: 0;
-  left: -100vw;
-  transition: 0s;
-}
-section input[value="4"]:checked ~ article:nth-of-type(1) div{
-  z-index: 1;
-  left: 150vw;
-}
-section input[value="4"]:checked ~ label:nth-of-type(1){
-  visibility: hidden;
-  left: auto;
-  right: 1.875em;
-  pointer-events: none;
-}
-
-/* 2 */
-section input[value="4"]:checked ~ article:nth-of-type(2){
-  z-index: 0;
-  left: -50vw;
-  transition: .3s;
-}
-section input[value="4"]:checked ~ article:nth-of-type(2) div{
-  z-index: 1;
-  left: 100vw;
-}
-section input[value="4"]:checked ~ label:nth-of-type(2){
-  visibility: hidden;
-  left: auto;
-  right: 1.875em;
-  pointer-events: none;
-}
-
-/* 3 */
-section input[value="4"]:checked ~ article:nth-of-type(3){
-  z-index: 0;
-  left: 0;
-  transition: .3s;
-}
-section input[value="4"]:checked ~ article:nth-of-type(3) div{
-  z-index: 1;
-  left: 50vw;
-}
-section input[value="4"]:checked ~ label:nth-of-type(3){
-  visibility: visible;
-  left: 1.875em;
-  right: auto;
-  pointer-events: all;
-}
-
-/* 4 */
-section input[value="4"]:checked ~ article:nth-of-type(4){
-  z-index: 0;
-  left: 50vw;
-  transition: .3s;
-}
-section input[value="4"]:checked ~ article:nth-of-type(4) div{
-  z-index: 1;
-  left: -0;
-}
-section input[value="4"]:checked ~ label:nth-of-type(4){
-  visibility: hidden;
-  left: auto;
-  right: 1.875em;
-  pointer-events: none;
-}
-/* 5 */
-section input[value="4"]:checked ~ article:nth-of-type(5){
-  z-index: 0;
-  left: 100vw;
-  transition: .3s;
-}
-section input[value="4"]:checked ~ article:nth-of-type(5) div{
-  z-index: 1;
-  left: -50vw;
-}
-section input[value="4"]:checked ~ label:nth-of-type(5){
-  visibility: visible;
-  left: auto;
-  right: 1.875em;
-  pointer-events: all;
-}
-/* 6 */
-section input[value="4"]:checked ~ article:nth-of-type(6){
-  z-index: 0;
-  left: 150vw;
-  transition: 0s;
-}
-section input[value="4"]:checked ~ article:nth-of-type(6) div{
-  z-index: 1;
-  left: -100vw;
-}
-section input[value="4"]:checked ~ label:nth-of-type(6){
-  visibility: hidden;
-  left: auto;
-  right: 1.875em;
-  pointer-events: none;
-}
-
-
-
-/* 5  active */
-section input[value="5"]:checked ~ article:nth-of-type(1){
-  z-index: 0;
-  left: 150vw;
-  transition: 0s;
-}
-section input[value="5"]:checked ~ article:nth-of-type(1) div{
-  z-index: 1;
-  left: -100vw;
-}
-
-/* 2 */
-section input[value="5"]:checked ~ article:nth-of-type(2){
-  z-index: 0;
-  left: -100vw;
-  transition: 0s;
-}
-section input[value="5"]:checked ~ article:nth-of-type(2) div{
-  z-index: 1;
-  left: 150vw;
-}
-
-/* 3 */
-section input[value="5"]:checked ~ article:nth-of-type(3){
-  z-index: 0;
-  left: -50vw;
-  transition: .3s;
-}
-section input[value="5"]:checked ~ article:nth-of-type(3) div{
-  z-index: 1;
-  left: 100vw;
-}
-/* 4 */
-section input[value="5"]:checked ~ article:nth-of-type(4){
-  z-index: 0;
-  left: 0vw;
-  transition: .3s;
-}
-section input[value="5"]:checked ~ article:nth-of-type(4) div{
-  z-index: 1;
-  left: 50vw;
-}
-section input[value="5"]:checked ~ label:nth-of-type(4){
-  visibility: visible;
-  left: 1.875em;
-  right: auto;
-  pointer-events: all;
-}
-/* 5 */
-section input[value="5"]:checked ~ article:nth-of-type(5){
-  z-index: 0;
-  left: 50vw;
-  transition: .3s;
-}
-section input[value="5"]:checked ~ article:nth-of-type(5) div{
-  z-index: 1;
-  left: 0vw;
-}
-section input[value="5"]:checked ~ label:nth-of-type(5){
-  visibility: hidden;
-  left: auto;
-  right: 1.875em;
-  pointer-events: none;
-}
-/* 6 */
-section input[value="5"]:checked ~ article:nth-of-type(6){
-  z-index: 0;
-  left: 100vw;
-  transition: .3s;
-}
-section input[value="5"]:checked ~ article:nth-of-type(6) div{
-  z-index: 1;
-  left: -50vw;
-}
-section input[value="5"]:checked ~ label:nth-of-type(6){
-  visibility: visible;
-  left: auto;
-  right: 1.875em;
-  pointer-events: all;
-}
-
-/* 6  active */
-section input[value="6"]:checked ~ article:nth-of-type(1){
-  z-index: 0;
-  left: 100vw;
-  transition: .3s;
-}
-section input[value="6"]:checked ~ article:nth-of-type(1) div{
-  z-index: 1;
-  left: -50vw;
-}
-/* 2 */
-section input[value="6"]:checked ~ article:nth-of-type(2){
-  z-index: 0;
-  left: 150vw;
-  transition: 0s;
-}
-section input[value="6"]:checked ~ article:nth-of-type(2) div{
-  z-index: 1;
-  left: -100vw;
-}
-
-/* 3 */
-section input[value="6"]:checked ~ article:nth-of-type(3){
-  z-index: 0;
-  left: -100vw;
-  transition: 0s;
-}
-section input[value="6"]:checked ~ article:nth-of-type(3) div{
-  z-index: 1;
-  left: 150vw;
-}
-/* 4 */
-section input[value="6"]:checked ~ article:nth-of-type(4){
-  z-index: 0;
-  left: -50vw;
-  transition: .3s;
-}
-section input[value="6"]:checked ~ article:nth-of-type(4) div{
-  z-index: 1;
-  left: 100vw;
-}
-/* 5 */
-section input[value="6"]:checked ~ article:nth-of-type(5){
-  z-index: 0;
-  left: 0vw;
-  transition: .3s;
-}
-section input[value="6"]:checked ~ article:nth-of-type(5) div{
-  z-index: 1;
-  left: 50vw;
-}
-/* 6 */
-section input[value="6"]:checked ~ article:nth-of-type(6){
-  z-index: 0;
-  left: 50vw;
-  transition: .3s;
-}
-section input[value="6"]:checked ~ article:nth-of-type(6) div{
-  z-index: 1;
-  left: 0;
-}
-section input[value="6"]:checked ~ label:nth-of-type(6){
-  visibility: hidden;
-  left: auto;
-  right: 1.875em;
-  pointer-events: none;
-}
-
-section input[value= "1"]:checked ~ article:nth-of-type(1) figure{
-  clip-path: inset(100px 5% 100px);
-}
-section input[value="1"]:checked ~ label:nth-of-type(2):before{
-    content: '›';
-    display: block;
-}
-section input[value= "2"]:checked ~ article:nth-of-type(2) figure{
-  clip-path: inset(100px 5% 100px);
-}
-section input[value="2"]:checked ~ label:nth-of-type(3):before{
-    content: '›';
-    display: block;
-}
-section input[value= "3"]:checked ~ article:nth-of-type(3) figure{
-  clip-path: inset(100px 5% 100px);
-}
-section input[value="3"]:checked ~ label:nth-of-type(4):before{
-    content: '›';
-    display: block;
-}
-section input[value= "4"]:checked ~ article:nth-of-type(4) figure{
-  clip-path: inset(100px 5% 100px);
-}
-section input[value="4"]:checked ~ label:nth-of-type(5):before{
-    content: '›';
-    display: block;
-}
-section input[value= "5"]:checked ~ article:nth-of-type(5) figure{
-  clip-path: inset(100px 5% 100px);
-}
-section input[value="5"]:checked ~ label:nth-of-type(6):before{
-    content: '›';
-    display: block;
-}
-section input[value= "6"]:checked ~ article:nth-of-type(6) figure{
-  clip-path: inset(100px 5% 100px);
-}
-section input[value="6"]:checked ~ label:nth-of-type(7):before{
-    content: '›';
-    display: block;
-}
-
-section input:nth-of-type(1):not(:checked) + label{
-  visibility: visible;
-  right: 1.875em;
-  left: auto;
-  pointer-events: all;
-}
-section label:nth-of-type(7){
-  visibility: hidden;
-  pointer-events: none;
-}
-section article form input{
-  position: absolute;
-}
-section form{
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  width: 100%;
+  flex-direction: column;
+  max-width: 80em;
+  padding: 0px 1.25em;
+  margin: 0 auto;
+}
+section:first-of-type{
+  margin-top: 2.5em;
 }
 
-section form input{
-  position: absolute;
-  opacity: 0;
-}
 
-section form label{
-  position: absolute;
-  opacity: 1;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-  color: white;
-  text-align: center;
-  left: 1.875em;
-  right: auto;
-  text-indent: -9999px;
-  cursor: pointer;
+section footer fieldset div > input:checked ~ label,
+section footer fieldset div:not(:checked) > label:hover,
+section footer fieldset div:not(:checked) > label:hover ~ label {
+  background: red;
 }
-section form label:before{
-  content: '‹';
-  text-indent: 0;
-  font-size: 6rem;
-  display: block;
-  width: 2.5em;
-  height: 2.5em;
-  text-align: center;
-  line-height: 0.4;
-  animation: hoverArrow 1s alternate-reverse infinite;
-  animation-play-state: paused;
+section footer fieldset div > input:checked + label:hover,
+section footer fieldset div > input:checked ~ label:hover,
+section footer fieldset div > label:hover ~ input:checked ~ label,
+section footer fieldset div > input:checked ~ label:hover ~ label {
+  background: red;
 }
-section form label:hover:before{
-  animation-play-state: running;
+  section footer fieldset div{
+    display: flex;
+    flex-direction: row-reverse;
+  }
+input{
+  direction: rtl; /* Wow this one is epic */
 }
-@keyframes hoverArrow {
-  from {transform: translateX(-5px);}
-    to {transform: translateX(5px);}
+section article > h1{
+  border-left: 5px solid var(--hover-color);
+  display: inline-block;
+  font-size: 2.25rem;
+  line-height: 1;
+  padding-left: 10px;
+  color: #343434;
 }
-section form label:nth-of-type(1):before{
-  display: block;
-  content: '›';
+section article figure{
+  display: flex;
 }
-section form label:after{
-  content: '1/6';
-  position: absolute;
-  top: calc(50vh - 60px);
-  left: calc(-50vw + 60px);
-  transform: translateX(-50%);
-  display: block;
-  color: black;
-  opacity: 0;
-  visibility: visible;
-  text-indent: 0;
-  font-size: 1.25rem;
-  padding: 10px;
-}
-section input:focus + label:after{
-  border: 1px solid black;
-}
-
-section form input:nth-of-type(1) + label:after{
-  content: '1/6';
-}
-section form input:nth-of-type(2) + label:after{
-  content: '2/6';
-}
-section form input:nth-of-type(3) + label:after{
-  content: '3/6';
-}
-section form input:nth-of-type(4) + label:after{
-  content: '4/6';
-}
-section form input:nth-of-type(5) + label:after{
-  content: '5/6';
-}
-section form input:nth-of-type(6) + label:after{
-  content: '6/6';
-}
-section form input:checked + label:after{
-  opacity: 1;
-}
-section{
-  background: linear-gradient(white, #ECECEC);
-}
-section form > span{
-  clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 45% 75%, 15% 100%, 20% 75%, 0% 75%);
-  background: #BDC3C7;
-  display: block;
-  width: 12.5em;
-  height: 6.25em;
-  padding: 25px;
-  position: absolute;
-  bottom: 50px;
-  left: calc(50% + 100px);
-  transform: translateX(-50%);
-  z-index: 2;
-  opacity: 0;
-  /* transition: .6s ease-in-out; */
-  animation: animateTooltip 10s forwards;
-  animation-play-state: paused;
-}
-section input:focus ~ span{
-  animation-play-state: running;
-}
-@keyframes animateTooltip {
-  0%{ opacity: 0; }
-  25%{ opacity: 1; }
-  75%{ opacity: 1; }
-  100%{ opacity: 0; }
-}
-section input[value= "1"]:checked ~ article:nth-of-type(1) figcaption{
-  display: block;
-  opacity: 0;
-}
-section input[value= "1"]:checked ~ article:nth-of-type(1):focus-within figcaption{
-  opacity: 1;
-  transform: translateY(0);
-}
-section input[value= "2"]:checked ~ article:nth-of-type(2) figcaption{
-  opacity: 0;
-  display: block;
-}
-section input[value= "2"]:checked ~ article:nth-of-type(2):focus-within figcaption{
-  opacity: 1;
-  display: block;
-}
-section input[value= "3"]:checked ~ article:nth-of-type(3) figcaption{
-  opacity: 0;
-  display: block;
-}
-section input[value= "3"]:checked ~ article:nth-of-type(3):focus-within figcaption{
-  opacity: 1;
-  display: block;
-}
-section input[value= "4"]:checked ~ article:nth-of-type(4) figcaption{
-  opacity: 0;
-  display: block;
-}
-section input[value= "4"]:checked ~ article:nth-of-type(4):focus-within figcaption{
-  opacity: 1;
-  display: block;
-}
-section input[value= "5"]:checked ~ article:nth-of-type(5) figcaption{
-  opacity: 0;
-  display: block;
-}
-section input[value= "5"]:checked ~ article:nth-of-type(5):focus-within figcaption{
-  opacity: 1;
-  display: block;
-}
-section input[value= "6"]:checked ~ article:nth-of-type(6) figcaption{
-  opacity: 0;
-  display: block;
-}
-section input[value= "6"]:checked ~ article:nth-of-type(6):focus-within figcaption{
-  opacity: 1;
-  display: block;
-
-}
+section article figure img{ width: 60%; height: 100%; }

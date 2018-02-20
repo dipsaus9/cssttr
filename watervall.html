@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schilderijen webshop</title>
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <header>
+    <nav>
+        <h1>Hoofd Navigatie</h1>
+        <ul>
+            <li><a href="index.html" aria-label="Home">Home</a></li>
+            <li>
+              <a aria-label="Products, current page" href="watervall.html">Schilderijen</a>
+              <ul>
+                  <li title="rock"><a href="watervall.html">Natuur</a></li>
+                  <li title="paper"><a href="watervall.html">Abstract</a></li>
+                  <li title="scissor"><a href="watervall.html">Overige</a></li>
+              </ul>
+            </li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+  </header>
+  <section>
+    <article>
+    	<h1>Fantastisch schilderij van een waterval</h1>
+    	<figure>
+    		<img src="img/waterval.jpg" alt="Product image of a rock" />
+    		<figcaption>
+    			<p>
+    				Ik kan wel uren blijven door praten over dit schilderij. De kleuren en het contrast. Ik weet gewoon niet wat ik hier over moet zeggen. Als je dit schilderij wilt kopen kan dat natuurlijk. Voeg dit product dan toe aan je winkelwagentje.
+    			</p>
+    			<footer>
+    				<time datetime="2017-02-06">6-2-2017</time> © 2017 <a href="https://vasilis.nl">Auteur: Vasilis van Gemert</a>
+    			</footer>
+    		</figcaption>
+    	</figure>
+    </article>
+    <footer>
+      <fieldset>
+        <legend>Waardering</legend>
+        <div>
+          <input type="radio" name="rating" id="rating-4">
+          <label for="rating-4">
+              Fantastisch
+          </label>
+          <input type="radio" name="rating" id="rating-3">
+          <label for="rating-3">
+              Geweldig
+              <polygon points="50 160 55 180 70 180 60 190 65 205 50 195 35 205 40 190 30 180 45 180"
+                stroke="green" fill="transparent" stroke-width="5"/>
+          </label>
+          <input type="radio" name="rating" id="rating-2">
+          <label for="rating-2">
+              Mooi
+              <polygon points="50 160 55 180 70 180 60 190 65 205 50 195 35 205 40 190 30 180 45 180"
+                stroke="green" fill="transparent" stroke-width="5"/>
+          </label>
+          <input type="radio" name="rating" id="rating-1">
+          <label for="rating-1">
+              Het gaat
+              <polygon points="50 160 55 180 70 180 60 190 65 205 50 195 35 205 40 190 30 180 45 180"
+                stroke="green" fill="transparent" stroke-width="5"/>
+          </label>
+          <input type="radio" name="rating" id="rating-0">
+          <label for="rating-0">
+              Ik vind dit niks
+              <polygon points="50 160 55 180 70 180 60 190 65 205 50 195 35 205 40 190 30 180 45 180"
+                stroke="green" fill="transparent" stroke-width="5"/>
+          </label>
+        </div>
+      </fieldset>
+      <a href="#login">Voeg het schilderij toe aan je winkelwagentje</a>
+    </footer>
+  </section>
+  <!-- <section id="login">
+    <form action="/" method="post">
+        <label for="field-email">Email</label>
+        <input type="email" id="field-email" name="field-email" autocomplete="email" required autofocus>
+        <label for="field-password">Password</label>
+        <input type="password" id="field-password" name="field-password" required>
+        <input type="checkbox" id="field-stay-logged-in" name="field-stay-logged-in" value="stay-logged-in">
+        <label for="field-stay-logged-in">Stay logged in</label>
+        <a href="/">Forgot password</a>
+        <button type="submit">Login</button>
+
+    </form>
+
+  </section> -->
+</body>
+</html>
