@@ -1,4 +1,3 @@
-# Components	+#Bar manipulation of the KNMI website
 # CSSTR!	+For this assignment i made a chart with the csv downloaded from the KNMI website.
 ## Week 1
 This week we kicked off this awesome project. With some lectures and online information we started coding on a website based on html and css only. This sound pretty easy but it has some challenges for me.
