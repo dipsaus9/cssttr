@@ -11,7 +11,9 @@
   font-style: normal; }
 :root{
    --hover-color: #f18764;
-
+}
+* {
+  box-sizing: border-box;
 }
 body, html{
   font-family: CircularStd, sans-serif;
@@ -151,7 +153,7 @@ nav ul li a[aria-label*="current"]{
   box-shadow: inset 0 0px 0 white, inset 0px -5px 0 #663399  ;
 }
 nav ul li:focus-within a[aria-label*="current"], nav ul li:hover a[aria-label*="current page"]{
-  border-bottom: 10px solid var(--hover-color);
+  border-bottom: 5px solid var(--hover-color);
 }
 nav ul li{
   text-decoration: none;
@@ -253,5 +255,66 @@ section article > h1{
 }
 section article figure{
   display: flex;
+  margin-top: 2em;
+  position: relative;
 }
-section article figure img{ width: 60%; height: 100%; }
+section article figure img{
+  width: 60%;
+  height: 100%;
+}
+section article figure figcaption{
+  padding: 0 0 0 25px;
+  font-size: 1rem;
+  letter-spacing: .5px;
+  line-height: 1.5;
+}
+section article figure figcaption h2{
+  font-size: 1.75rem;
+  padding: 0 0 15px;
+  line-height: 1;
+}
+section article figure figcaption p{
+  padding: 0 0 10px;
+}
+section article figure figcaption a{
+  text-decoration: none;
+  font-weight: bold;
+}
+figcaption a:focus{
+  outline: none;
+}
+p + p{ padding: 10px 0;}
+
+figure:before{
+  content: '';
+  display: block;
+  width: 60%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  background: rgba(0,0,0, 0);
+  transition: .3s ease-in-out;
+}
+figure:after{
+  content: 'Klik op enter om naar de website van de auteur te gaan';
+  display: flex;
+  width: 60%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  align-items: center;
+  justify-content: center;
+  transition: .3s ease-in-out;
+  color: white;
+  font-size: 1.3rem;
+  line-height: 1;
+  letter-spacing: 0;
+  opacity: 0;
+}
+
+figure:focus-within:before{
+  background: rgba(0,0,0,.5);
+}
+figure:focus-within:after{
+  opacity: 1;
+}
