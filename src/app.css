@@ -27,13 +27,13 @@ h1, h2, h3, h4, h5, h6, figure, p{ margin: 0; }
 
 a{ color: #303030; }
 
-header{ height: 65px;
+header{ height: 4em;
   border-bottom: 1px solid black;
 }
 
 header nav{
   display: flex;
-  max-width: 1280px;
+  max-width: 80em;
   margin: 0 auto;
   justify-content: space-between;
   padding: 0 1.25rem;
@@ -45,8 +45,8 @@ nav h1{
   font-size: 1rem;
   text-indent: -9999em;
   display: block;
-  width: 200px;
-  height: 50px;
+  width: 12.5em;
+  height: 3.125em;
   background-image: url('../img/logo.png');
   background-repeat: no-repeat;
   background-size: contain;
@@ -66,7 +66,7 @@ nav ul li{
   display: flex;
   height: 100%;
   align-items: center;
-  padding: 0px 20px;
+  padding: 0 1.25em;
 }
 
 nav ul li:last-of-type{
@@ -100,10 +100,12 @@ a:after{
 a:focus:after, a:hover:after{
   width: 100%;
 }
+
+/* styling for home page only after this*/
 section{
   position: relative;
   top: 0;
-  height: calc(100vh - 65px);
+  height: calc(100vh - 4em);
   overflow: hidden;
   width: 100%;
   display: flex;
@@ -141,7 +143,7 @@ article figure{
   height: 100%;
   display: block;
   position: relative;
-  clip-path: inset(150px 15%);
+  clip-path: inset(10em 15%);
   transition: .3s ease-in-out;
 }
 article figure figcaption{
@@ -202,7 +204,7 @@ section input[value="1"]:checked ~ label:nth-of-type(1){
   pointer-events: none;
   visibility: hidden;
   left: auto;
-  right: 30px;
+  right: 1.875em;
 }
 
 
@@ -220,7 +222,7 @@ section input[value="1"]:checked ~ label:nth-of-type(2){
   visibility: visible;
   pointer-events: all;
   left: auto;
-  right: 30px;
+  right: 1.875em;
 }
 /* 3 */
 section input[value="1"]:checked ~ article:nth-of-type(3){
@@ -283,12 +285,9 @@ section input[value="1"]:checked ~ article:nth-of-type(6) div{
 section input[value="1"]:checked ~ label:nth-of-type(6){
   visibility: visible;
   pointer-events: all;
-  left: 30px;
+  left: 1.875em;
   right: auto;
 }
-
-
-
 
 
 /* 2 active */
@@ -304,7 +303,7 @@ section input[value="2"]:checked ~ article:nth-of-type(1) div{
 section input[value="2"]:checked ~ label:nth-of-type(1){
   pointer-events: all;
   visibility: visible;
-  left: 30px;
+  left: 1.875em;
   right: auto;
 }
 
@@ -321,12 +320,12 @@ section input[value="2"]:checked ~ article:nth-of-type(2) div{
 section input[value="2"]:checked ~ label:nth-of-type(2){
   visibility: hidden;
   left: auto;
-  right: 30px;
+  right: 1.875em;
   pointer-events: none;
 }
 section input[value="2"]:checked ~ label:last-of-type{
   visibility: visible;
-  left: 30px;
+  left: 1.875em;
   right: auto;
   pointer-events: all;
 }
@@ -346,7 +345,7 @@ section input[value="2"]:checked ~ label:nth-of-type(3){
   pointer-events: all;
   visibility: visible;
   left: auto;
-  right: 30px;;
+  right: 1.875em;;
 }
 
 
@@ -363,7 +362,7 @@ section input[value="2"]:checked ~ article:nth-of-type(4) div{
 section input[value="2"]:checked ~ label:nth-of-type(4){
   visibility: hidden;
   left: auto;
-  right: 30px;
+  right: 1.875em;
   pointer-events: none;
 }
 
@@ -382,7 +381,7 @@ section input[value="2"]:checked ~ article:nth-of-type(5) div{
 section input[value="2"]:checked ~ label:nth-of-type(5){
   visibility: hidden;
   left: auto;
-  right: 30px;
+  right: 1.875em;
   pointer-events: none;
 }
 
@@ -400,7 +399,7 @@ section input[value="2"]:checked ~ article:nth-of-type(6) div{
 section input[value="2"]:checked ~ label:nth-of-type(6){
   visibility: hidden;
   left: auto;
-  right: 30px;
+  right: 1.875em;
   pointer-events: none;
 }
 
@@ -418,7 +417,7 @@ section input[value="3"]:checked ~ article:nth-of-type(1) div{
 section input[value="3"]:checked ~ label:nth-of-type(1){
   visibility: hidden;
   left: auto;
-  right: 30px;
+  right: 1.875em;
   pointer-events: none;
 }
 
@@ -434,7 +433,7 @@ section input[value="3"]:checked ~ article:nth-of-type(2) div{
 }
 section input[value="3"]:checked ~ label:nth-of-type(2){
   visibility: visible;
-  left: 30px;
+  left: 1.875em;
   right: auto;
   pointer-events: all;
 }
@@ -452,7 +451,7 @@ section input[value="3"]:checked ~ article:nth-of-type(3) div{
 section input[value="3"]:checked ~ label:nth-of-type(3){
   visibility: hidden;
   left: auto;
-  right: 30px;
+  right: 1.875em;
   pointer-events: none;
 }
 
@@ -469,7 +468,7 @@ section input[value="3"]:checked ~ article:nth-of-type(4) div{
 section input[value="3"]:checked ~ label:nth-of-type(4){
   visibility: visible;
   left: auto;
-  right: 30px;
+  right: 1.875em;
   pointer-events: all;
 }
 
@@ -486,7 +485,7 @@ section input[value="3"]:checked ~ article:nth-of-type(5) div{
 section input[value="3"]:checked ~ label:nth-of-type(5){
   visibility: hidden;
   left: auto;
-  right: 30px;
+  right: 1.875em;
   pointer-events: none;
 }
 
@@ -504,11 +503,9 @@ section input[value="3"]:checked ~ article:nth-of-type(6) div{
 section input[value="3"]:checked ~ label:nth-of-type(6){
   visibility: hidden;
   left: auto;
-  right: 30px;
+  right: 1.875em;
   pointer-events: none;
 }
-
-
 
 /* 4  active */
 section input[value="4"]:checked ~ article:nth-of-type(1){
@@ -523,7 +520,7 @@ section input[value="4"]:checked ~ article:nth-of-type(1) div{
 section input[value="4"]:checked ~ label:nth-of-type(1){
   visibility: hidden;
   left: auto;
-  right: 30px;
+  right: 1.875em;
   pointer-events: none;
 }
 
@@ -540,7 +537,7 @@ section input[value="4"]:checked ~ article:nth-of-type(2) div{
 section input[value="4"]:checked ~ label:nth-of-type(2){
   visibility: hidden;
   left: auto;
-  right: 30px;
+  right: 1.875em;
   pointer-events: none;
 }
 
@@ -556,7 +553,7 @@ section input[value="4"]:checked ~ article:nth-of-type(3) div{
 }
 section input[value="4"]:checked ~ label:nth-of-type(3){
   visibility: visible;
-  left: 30px;
+  left: 1.875em;
   right: auto;
   pointer-events: all;
 }
@@ -574,7 +571,7 @@ section input[value="4"]:checked ~ article:nth-of-type(4) div{
 section input[value="4"]:checked ~ label:nth-of-type(4){
   visibility: hidden;
   left: auto;
-  right: 30px;
+  right: 1.875em;
   pointer-events: none;
 }
 /* 5 */
@@ -590,7 +587,7 @@ section input[value="4"]:checked ~ article:nth-of-type(5) div{
 section input[value="4"]:checked ~ label:nth-of-type(5){
   visibility: visible;
   left: auto;
-  right: 30px;
+  right: 1.875em;
   pointer-events: all;
 }
 /* 6 */
@@ -606,7 +603,7 @@ section input[value="4"]:checked ~ article:nth-of-type(6) div{
 section input[value="4"]:checked ~ label:nth-of-type(6){
   visibility: hidden;
   left: auto;
-  right: 30px;
+  right: 1.875em;
   pointer-events: none;
 }
 
@@ -656,7 +653,7 @@ section input[value="5"]:checked ~ article:nth-of-type(4) div{
 }
 section input[value="5"]:checked ~ label:nth-of-type(4){
   visibility: visible;
-  left: 30px;
+  left: 1.875em;
   right: auto;
   pointer-events: all;
 }
@@ -673,7 +670,7 @@ section input[value="5"]:checked ~ article:nth-of-type(5) div{
 section input[value="5"]:checked ~ label:nth-of-type(5){
   visibility: hidden;
   left: auto;
-  right: 30px;
+  right: 1.875em;
   pointer-events: none;
 }
 /* 6 */
@@ -689,7 +686,7 @@ section input[value="5"]:checked ~ article:nth-of-type(6) div{
 section input[value="5"]:checked ~ label:nth-of-type(6){
   visibility: visible;
   left: auto;
-  right: 30px;
+  right: 1.875em;
   pointer-events: all;
 }
 
@@ -757,7 +754,7 @@ section input[value="6"]:checked ~ article:nth-of-type(6) div{
 section input[value="6"]:checked ~ label:nth-of-type(6){
   visibility: hidden;
   left: auto;
-  right: 30px;
+  right: 1.875em;
   pointer-events: none;
 }
 
@@ -806,7 +803,7 @@ section input[value="6"]:checked ~ label:nth-of-type(7):before{
 
 section input:nth-of-type(1):not(:checked) + label{
   visibility: visible;
-  right: 30px;
+  right: 1.875em;
   left: auto;
   pointer-events: all;
 }
@@ -837,7 +834,7 @@ section form label{
   z-index: 2;
   color: white;
   text-align: center;
-  left: 30px;
+  left: 1.875em;
   right: auto;
   text-indent: -9999px;
   cursor: pointer;
@@ -847,8 +844,8 @@ section form label:before{
   text-indent: 0;
   font-size: 6rem;
   display: block;
-  width: 40px;
-  height: 40px;
+  width: 2.5em;
+  height: 2.5em;
   text-align: center;
   line-height: 0.4;
   animation: hoverArrow 1s alternate-reverse infinite;
@@ -911,8 +908,8 @@ section form > span{
   clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 45% 75%, 15% 100%, 20% 75%, 0% 75%);
   background: #BDC3C7;
   display: block;
-  width: 200px;
-  height: 100px;
+  width: 12.5em;
+  height: 6.25em;
   padding: 25px;
   position: absolute;
   bottom: 50px;
