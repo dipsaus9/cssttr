@@ -9,6 +9,7 @@
   src: url("../fonts/CircularStd-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/CircularStd-Bold.woff") format("woff"), url("../fonts/CircularStd-Bold.ttf") format("truetype"), url("../fonts/CircularStd-Bold.svg#CircularStd") format("svg");
   font-weight: 700;
   font-style: normal; }
+/* resets and variables */
 :root{
    --hover-color: #f18764;
 }
@@ -30,8 +31,42 @@ ul, li {
 }
 h1, h2, h3, h4, h5, h6, figure, p{ margin: 0; }
 
-a{ color: #303030; }
+a{
+  position: relative;
+  transition: .3s ease-in-out;
+  color: #303030;
+}
+a:before{
+  content: '';
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 0;
+  background-color: var(--hover-color);
+  height: 2px;
+  z-index: 1;
+  transition: .3s ease-in-out;
+}
+a:focus:before, a:hover:before{
+  width: 100%;
+}
+p + p{ padding: 10px 0;}
 
+section{
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 25px;
+}
+section:first-of-type{
+  margin-top: 2.5em;
+}
+head.not-home + body section:last-of-type{
+  margin-bottom: 100px;
+}
+/* start header */
 header{ height: 4em;
   border-bottom: 1px solid black;
 }
@@ -43,6 +78,7 @@ header nav{
   justify-content: space-between;
   padding: 0 1.25rem;
   z-index: 2;
+  flex-wrap: wrap;
 }
 
 nav h1{
@@ -174,77 +210,73 @@ nav ul li a{
   height: 100%;
   outline: none;
 }
-nav ul li ul li[title="rock"] {
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7)), url("../img/rock.jpg");
+
+/* later aanpassen */
+nav ul li ul li[title="nature"] {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7)), url("../img/nature.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
-nav ul li ul li[title="paper"] {
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7)), url("../img/paper.png");
+nav ul li ul li[title="abstract"] {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7)), url("../img/abstract.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
-nav ul li ul li[title="scissor"] {
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7)), url("../img/scissor.jpg");
+nav ul li ul li[title="rest"] {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7)), url("../img/art.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   padding: 0px 1.25em 1.25em;
 }
-a{
-  position: relative;
-  transition: .3s ease-in-out;
-}
-a:before{
-  content: '';
-  display: block;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 0;
-  background-color: var(--hover-color);
-  height: 2px;
-  z-index: 1;
-  transition: .3s ease-in-out;
-}
-a:focus:before, a:hover:before{
-  width: 100%;
-}
 
-section{
-  width: 100%;
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  max-width: 80em;
+/* uitzonderingen voor not home */
+head.not-home + body section article, head.not-home + body section footer{
   padding: 0px 1.25em;
+  max-width: 80em;
+  width: 100%;
   margin: 0 auto;
 }
-section:first-of-type{
-  margin-top: 2.5em;
-}
+head.not-home + body section > footer{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5em;
+  align-items: flex-start;
 
-
-section footer fieldset div > input:checked ~ label,
-section footer fieldset div:not(:checked) > label:hover,
-section footer fieldset div:not(:checked) > label:hover ~ label {
-  background: red;
 }
-section footer fieldset div > input:checked + label:hover,
-section footer fieldset div > input:checked ~ label:hover,
-section footer fieldset div > label:hover ~ input:checked ~ label,
-section footer fieldset div > input:checked ~ label:hover ~ label {
-  background: red;
-}
-  section footer fieldset div{
-    display: flex;
-    flex-direction: row-reverse;
-  }
-input{
+head.not-home + body input{
   direction: rtl; /* Wow this one is epic */
 }
+head.not-home + body section article > figure:after{
+  content: 'Klik op enter om naar de website van de auteur te gaan';
+  display: flex;
+  width: 60%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  align-items: center;
+  justify-content: center;
+  transition: .3s ease-in-out;
+  color: white;
+  font-size: 1.3rem;
+  line-height: 1;
+  letter-spacing: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+head.not-home + body section article > figure:focus-within:before{
+  background: rgba(0,0,0,.5);
+}
+head.not-home + body section article > figure:focus-within:after{
+  opacity: 1;
+}
+head.not-home + body section figcaption footer{
+  padding: 0;
+}
+
+/* section styling */
 section article > h1{
   border-left: 5px solid var(--hover-color);
   display: inline-block;
@@ -253,6 +285,7 @@ section article > h1{
   padding-left: 10px;
   color: #343434;
 }
+/* section figure */
 section article figure{
   display: flex;
   margin-top: 2em;
@@ -279,13 +312,13 @@ section article figure figcaption p{
 section article figure figcaption a{
   text-decoration: none;
   font-weight: bold;
+  padding-left: 10px;
 }
-figcaption a:focus{
+section article figure figcaption a:focus{
   outline: none;
 }
-p + p{ padding: 10px 0;}
 
-figure:before{
+section article figure:before{
   content: '';
   display: block;
   width: 60%;
@@ -295,26 +328,371 @@ figure:before{
   background: rgba(0,0,0, 0);
   transition: .3s ease-in-out;
 }
-figure:after{
-  content: 'Klik op enter om naar de website van de auteur te gaan';
-  display: flex;
-  width: 60%;
-  height: 100%;
-  position: absolute;
-  z-index: 1;
-  align-items: center;
-  justify-content: center;
-  transition: .3s ease-in-out;
-  color: white;
-  font-size: 1.3rem;
-  line-height: 1;
-  letter-spacing: 0;
-  opacity: 0;
+
+/* section footer */
+section footer fieldset{
+  width: 250px;
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
-figure:focus-within:before{
-  background: rgba(0,0,0,.5);
+section footer fieldset legend{
+  font-size: 1.25rem;
+  line-height: 1.25;
+  letter-spacing: 1px;
+  font-weight: bold;
 }
-figure:focus-within:after{
+
+section footer fieldset input{
+  appearance: none;
+  margin: 0;
+}
+section footer fieldset label{
+  display: block;
+  width: 2.5em;
+  height: 2.5em;
+  text-indent: -9999px;
+  position: relative;
+}
+section footer svg{
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: none;
+  stroke: #F4D03F;
+  stroke-width: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* ingewikkeld element om de input fields te regelen */
+section footer fieldset div > input:checked ~ label svg,
+section footer fieldset div:not(:checked) > label:hover svg,
+section footer fieldset div:not(:checked) > label:hover ~ label svg{
+  fill: #F4D03F;
+}
+section footer fieldset div > input:checked + label:hover svg,
+section footer fieldset div > input:checked ~ label:hover svg,
+section footer fieldset div > label:hover ~ input:checked ~ label svg,
+section footer fieldset div > input:checked ~ label:hover ~ label svg{
+  fill: #F4D03F;
+}
+input + label{
+  /* animation: wiggle .5s infinite alternate; */
+  /* animation-play-state: paused; */
+  position: relative;
+  top: 0px;
+}
+div:focus-within input:not(:checked) ~ label{
+  animation: wiggle .5s infinite alternate;
+}
+div:focus-within input:checked ~ label{
+  animation: wiggle .5s infinite alternate;
+}
+section footer fieldset div{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  margin-top: 10px;
+  position: relative;
+}
+section footer fieldset div:after{
+  content: 'Om een waardering te geven gebruik de pijltjes toetsen';
+  clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 45% 75%, 15% 100%, 20% 75%, 0% 75%);
+  background: #BDC3C7;
+  display: block;
+  width: 15em;
+  height: 3.25em;
+  padding: 20px 25px 40px;
+  position: absolute;
+  bottom: 50px;
+  left: 100%;
+  transform: translateX(-50%);
+  z-index: 2;
+  opacity: 0;
+  color: black;
+  transition: .3s ease-in-out;
+}
+section footer fieldset div:focus-within:after{
   opacity: 1;
+  animation: fadeOut .5s forwards 3s;
 }
+
+@keyframes fadeOut {
+  from{ opacity: 1; }
+  to{ opacity: 0; }
+}
+@keyframes wiggle {
+  from{ top: 5px; }
+  to{ top: -5px; }
+}
+section > footer > a{
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 5px;
+  background: var(--hover-color);
+  padding: 15px 20px;
+  color: white;
+  transition: .3s ease-in-out;
+}
+section > footer > a:before{
+  content: none;
+}
+section > footer > a:hover, section > footer > a:focus{
+  background: #663399;
+}
+section#login{
+  position: fixed;
+  left: 50vw;
+  top: 50%;
+  width: 100vw;
+  max-width: 500px;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+section#login form{
+  position: relative;
+  z-index: 2;
+  background: white;
+  padding: 25px;
+  display: flex;
+  flex-wrap: wrap;
+}
+section#login input{
+  width: 100%;
+  font-size: 1.25rem;
+  line-height: 1;
+  letter-spacing: .5px;
+  text-align: left;
+  padding: 10px 10px;
+  border: none;
+  background: #f7f7f7;
+  color: #282828;
+  margin: 10px 0;
+  direction: ltr;
+}
+
+section#login input::placeholder{
+  opacity: 0;
+}
+section#login input:placeholder-shown + label{
+  top: calc(-2.5rem);
+}
+section#login input:not(:placeholder-shown):not(:valid){
+  border: 2px solid red;
+}
+section#login label{
+  position: relative;
+  top: calc(-5rem);
+  left: 10px;
+  transition: .3s ease-in-out;
+}
+section#login input:valid{
+  background: #87D37C;
+}
+section#login h2{
+  margin-bottom: 2rem;
+}
+section#login input[type="checkbox"]{
+  width: 25px;
+  height: 25px;
+  box-shadow: 0px 0px 1px 0 black;
+  border: none;
+  background: #f7f7f7;
+  appearance: none;
+  margin-right: calc(100% - 25px);
+}
+section#login input[type="checkbox"]:checked{
+  background: var(--hover-color);
+}
+section#login input[type="checkbox"] + label{
+  left: 35px;
+  top: -32px;
+}
+section#login button{
+  width: 100%;
+}
+section#login a{
+  display: block;
+  text-align: right;
+  top: -32px;
+  left: calc(100% - 95px);
+  transform: translateX(-100%);
+  top: -32px;
+  text-decoration: none;
+}
+section#login button{
+  width: 60%;
+  margin: 15px auto;
+  border: none;
+  box-shadow: none;
+  background: var(--hover-color);
+  font-size: 1.25rem;
+  line-height: 1;
+  letter-spacing: .5px;
+  text-align: center;
+  padding: 10px 15px;
+  color: white;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+section#login button:hover, section#login button:focus{
+  outline: none;
+  background: #663399;
+}
+section#login:before{
+  content: '';
+  position: fixed;
+  left: calc(-50vw + 50%);
+  top: calc(-50vh + 50%);
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  opacity: .5;
+  z-index: -1;
+}
+section#login h2 + a{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: block;
+  width: 30px;
+  height: 30px;
+  left: auto;
+  transform: translate(0);
+  text-indent: -9999px;
+  text-align: left;
+}
+section#login h2 + a:before{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: black;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+section#login h2 + a:after{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: black;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+section#login{
+  opacity: 0;
+  transition: .3s ease-in-out;
+  display: none;
+}
+section#login:target{
+  opacity: 1;
+  display: block;
+  pointer-events: all;
+}
+nav > a{
+  position: absolute;
+  right: 20px;
+  line-height: 65px;
+  display: none;
+}
+@media (max-width: 47.5em){
+  nav ul{
+    width: calc(100% - 40px);
+    z-index: 1;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 65px;
+    height: 0;
+    overflow: hidden;
+    transition: .4s ease-in-out;
+    border-bottom: 1px solid black;
+    max-width: 100%;
+  }
+  nav ul:focus-within{
+    height: 300px;
+  }
+  nav ul li ul{
+    border: none;
+  }
+  nav ul li{
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+  }
+  nav ul li a:first-child:nth-last-child(2){
+    position: relative;
+  }
+  nav ul li a:first-child:nth-last-child(2):after{
+    content: none;
+  }
+  nav ul li a:first-child:nth-last-child(2) + ul{
+    display: flex;
+    position: relative;
+    background: none;
+    left: 0;
+    transform: translateX(0);
+    top: 0;
+    overflow: visible;
+}
+  nav ul li a:first-child:nth-last-child(2) + ul li{
+    height: auto;
+    padding: 0;
+    margin: 0;
+    background: none;
+  }
+  nav ul li a:first-child:nth-last-child(2) + ul li a{
+    color: black;
+  }
+  nav ul li:nth-of-type(2){
+    margin-bottom: 100px;
+  }
+  nav ul li:last-of-type{
+    padding: 20px 0;
+  }
+  nav > a{
+    display: block;
+  }
+  section article figure{
+    flex-wrap: wrap;
+  }
+  section article figure img, section article figure figcaption{
+    width: 100%;
+  }
+  section article figure:before{
+    content: none;
+  }
+  section article figure figcaption{
+    margin: 15px 0;
+    padding: 0;
+  }
+  section footer fieldset{
+    width: 100%;
+  }
+  head.not-home + body section > footer{
+    flex-wrap: wrap;
+  }
+  head.not-home + body section > footer a{
+    margin-top: 15px;
+  }
+}
+
+/* url */
+/* https://www.widewalls.ch/what-is-abstract-art-informel/ */
+/* http://www.creativehdwallpapers.com/desktop-background-nature-art/ */
+/* https://www.artantiquesinteriorsfair.com/ */
+/* http://www.zdjecia.biz.pl/zdjecie,roy-fitz-niebo-gory-argentyna-patagonia-drogi.php */
+/* http://chromethemer.com/wallpapers/chromebook-wallpapers/highway-chromebook-wallpaper.html */
+/* http://www.ultrahdfreewallpapers.com/nature-hd-background-0004/ */
+/* https://mindsplash.life/imago-gallery/ */
+/* https://oldadelaideinn.com.au/macpac-19-960x636/ */
+/* https://kapaandbucha.com/tag/the-100%EF%BC%8F%E3%83%8F%E3%83%B3%E3%83%89%E3%83%AC%E3%83%83%E3%83%89 */

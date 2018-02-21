@@ -11,14 +11,15 @@
 <header>
   <nav>
       <h1>Hoofd Navigatie</h1>
+      <a href="#menu">Menu</span>
       <ul>
-          <li><a href="index.html" aria-label="Home, current page">Home</a></li>
+          <li><a id="menu" href="index.html" aria-label="Home, current page">Home</a></li>
           <li>
             <a aria-label="Products" href="watervall.html">Schilderijen</a>
             <ul>
-                <li title="rock"><a href="watervall.html">Natuur</a></li>
-                <li title="paper"><a href="watervall.html">Abstract</a></li>
-                <li title="scissor"><a href="watervall.html">Overige</a></li>
+              <li title="nature"><a href="watervall.html">Natuur</a></li>
+              <li title="abstract"><a href="watervall.html">Abstract</a></li>
+              <li title="rest"><a href="watervall.html">Overige</a></li>
             </ul>
           </li>
           <li><a href="/about">About</a></li>
@@ -28,7 +29,7 @@
 </header>
 <section>
   <form>
-    <input type="radio" id="slide1" name="slides" checked value="1">
+    <input autofocus type="radio" id="slide1" name="slides" checked value="1">
     <label for="slide1"></label>
     <input type="radio" id="slide2" name="slides" value="2">
     <label for="slide2"></label>

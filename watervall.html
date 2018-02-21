@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="nl">
-<head>
+<head class="not-home">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schilderijen webshop</title>
@@ -10,14 +10,15 @@
   <header>
     <nav>
         <h1>Hoofd Navigatie</h1>
+        <a href="#menu">Menu</span>
         <ul>
-            <li><a href="index.html" aria-label="Home">Home</a></li>
+            <li><a id="menu" href="index.html" aria-label="Home">Home</a></li>
             <li>
               <a aria-label="Products, current page" href="watervall.html">Schilderijen</a>
               <ul>
-                  <li title="rock"><a href="watervall.html">Natuur</a></li>
-                  <li title="paper"><a href="watervall.html">Abstract</a></li>
-                  <li title="scissor"><a href="watervall.html">Overige</a></li>
+                  <li title="nature"><a href="watervall.html">Natuur</a></li>
+                  <li title="abstract"><a href="watervall.html">Abstract</a></li>
+                  <li title="rest"><a href="watervall.html">Overige</a></li>
               </ul>
             </li>
             <li><a href="/about">About</a></li>
@@ -48,49 +49,62 @@
           <input type="radio" name="rating" id="rating-4">
           <label for="rating-4">
               Fantastisch
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
+                <title>star</title>
+                <polygon class="cls-1" points="125.22 0 154.78 90.98 250.44 90.98 173.05 147.21 202.61 238.19 125.22 181.96 47.83 238.19 77.39 147.21 0 90.98 95.66 90.98 125.22 0"/>
+              </svg>
           </label>
           <input type="radio" name="rating" id="rating-3">
           <label for="rating-3">
               Geweldig
-              <polygon points="50 160 55 180 70 180 60 190 65 205 50 195 35 205 40 190 30 180 45 180"
-                stroke="green" fill="transparent" stroke-width="5"/>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
+                <title>star</title>
+                <polygon class="cls-1" points="125.22 0 154.78 90.98 250.44 90.98 173.05 147.21 202.61 238.19 125.22 181.96 47.83 238.19 77.39 147.21 0 90.98 95.66 90.98 125.22 0"/>
+              </svg>
           </label>
           <input type="radio" name="rating" id="rating-2">
           <label for="rating-2">
               Mooi
-              <polygon points="50 160 55 180 70 180 60 190 65 205 50 195 35 205 40 190 30 180 45 180"
-                stroke="green" fill="transparent" stroke-width="5"/>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
+                <title>star</title>
+                <polygon class="cls-1" points="125.22 0 154.78 90.98 250.44 90.98 173.05 147.21 202.61 238.19 125.22 181.96 47.83 238.19 77.39 147.21 0 90.98 95.66 90.98 125.22 0"/>
+              </svg>
           </label>
           <input type="radio" name="rating" id="rating-1">
           <label for="rating-1">
               Het gaat
-              <polygon points="50 160 55 180 70 180 60 190 65 205 50 195 35 205 40 190 30 180 45 180"
-                stroke="green" fill="transparent" stroke-width="5"/>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
+                <title>star</title>
+                <polygon class="cls-1" points="125.22 0 154.78 90.98 250.44 90.98 173.05 147.21 202.61 238.19 125.22 181.96 47.83 238.19 77.39 147.21 0 90.98 95.66 90.98 125.22 0"/>
+              </svg>
           </label>
           <input type="radio" name="rating" id="rating-0">
           <label for="rating-0">
               Ik vind dit niks
-              <polygon points="50 160 55 180 70 180 60 190 65 205 50 195 35 205 40 190 30 180 45 180"
-                stroke="green" fill="transparent" stroke-width="5"/>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
+                <title>star</title>
+                <polygon class="cls-1" points="125.22 0 154.78 90.98 250.44 90.98 173.05 147.21 202.61 238.19 125.22 181.96 47.83 238.19 77.39 147.21 0 90.98 95.66 90.98 125.22 0"/>
+              </svg>
           </label>
         </div>
       </fieldset>
       <a href="#login">Voeg het schilderij toe aan je winkelwagentje</a>
     </footer>
   </section>
-  <!-- <section id="login">
+  <section id="login">
     <form action="/" method="post">
+        <h2>Log in</h2>
+        <a href="#">Close</a>
+        <input type="email" id="field-email" name="field-email" autocomplete="email" required placeholder="Email">
         <label for="field-email">Email</label>
-        <input type="email" id="field-email" name="field-email" autocomplete="email" required autofocus>
-        <label for="field-password">Password</label>
-        <input type="password" id="field-password" name="field-password" required>
+        <input type="password" id="field-password" name="field-password" placeholder="Wachtwoord" required>
+        <label for="field-password">Wachtwoord</label>
         <input type="checkbox" id="field-stay-logged-in" name="field-stay-logged-in" value="stay-logged-in">
-        <label for="field-stay-logged-in">Stay logged in</label>
-        <a href="/">Forgot password</a>
-        <button type="submit">Login</button>
+        <label for="field-stay-logged-in">Blijf ingelogd</label>
+        <a href="">Wachtwoord vergeten</a>
+        <button type="submit">Inloggen</button>
 
     </form>
-
-  </section> -->
+  </section>
 </body>
 </html>
